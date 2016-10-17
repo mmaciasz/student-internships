@@ -1,0 +1,4 @@
+.idea/
+*.iml
+student-internships-core/target/
+student-internships-web/target/
