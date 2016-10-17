@@ -1,0 +1,19 @@
+{
+  "yes": "Tak",
+  "no": "Nie",
+  "add": "Dodaj",
+  "save": "Zapisz",
+  "copy": "Kopiuj",
+  "edit": "Edytuj",
+  "delete": "Usuń",
+  "cancel": "Anuluj",
+  "open": "Otwórz",
+  "noData": "Brak wpisów",
+  "search": "Szukaj",
+  "select": "Wybierz",
+  "confirm": "Zatwierdź",
+  "code": "Kod",
+  "fullName": "Nazwa",
+  "authorize": "Autoryzacja",
+  "studentInternships": "Praktyki studenckie"
+}

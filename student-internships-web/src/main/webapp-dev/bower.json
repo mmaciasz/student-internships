@@ -1,0 +1,11 @@
+{
+  "name": "student-internships",
+  "description": "",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "angular-loader": "~1.4.0",
+    "angular-translate": "^2.11.0",
+    "angular-translate-loader-static-files": "^2.11.0"
+  }
+}

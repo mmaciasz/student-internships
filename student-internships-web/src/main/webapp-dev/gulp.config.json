@@ -1,0 +1,79 @@
+{
+    "dist": {
+        "dir": {
+            "relativeBasePath": "./../resources/static/",
+            "app": "app/"
+        },
+        "filename": {
+            "main": "app"
+        }
+    },
+
+    "includes": {
+        "css": [
+            "bower_components/html5-boilerplate/dist/css/normalize.css",
+            "bower_components/html5-boilerplate/dist/css/main.css",
+            "lib/modules/perfect-scrollbar/css/perfect-scrollbar.css",
+            "lib/modules/angular-ui-grid/ui-grid.css",
+            "lib/modules/jqwidgets/production/jqwidgets/styles/jqx.base.css",
+            "lib/modules/perfect-scrollbar/css/perfect-scrollbar.css",
+            "lib/modules/select2/select2.css",
+
+            "lib/modules/select2/select2.css",
+            "lib/modules/select2/select2-bootstrap.css",
+            "lib/modules/spectrum/spectrum.css",
+
+            "app/app.css"
+        ],
+        "js": [
+            "bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js",
+            "lib/modules/jquery/jquery.js",
+            "lib/modules/angular/angular.js",
+            "lib/modules/angular-route/angular-route.js",
+            "lib/modules/angular-hotkeys/build/hotkeys.min.js",
+            "lib/modules/angular-mousewheel/mousewheel.js",
+            "lib/modules/angular-sanitize/angular-sanitize.js",
+            "bower_components/angular-translate/angular-translate.js",
+            "bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js",
+            "lib/modules/jquery-ui/jquery-ui.js",
+            "lib/modules/perfect-scrollbar/js/perfect-scrollbar.js",
+            "lib/modules/fancytree/dist/jquery.fancytree.js",
+            "lib/modules/hamsterjs/hamster.js",
+            "lib/modules/jqwidgets/production/jqwidgets/jqx-custom.js",
+            "lib/modules/jqwidgets/production/jqwidgets/jqxcheckbox.js",
+            "lib/modules/jqwidgets/production/jqwidgets/jqxdragdrop.js",
+            "lib/modules/mousetrap/mousetrap.js",
+            "lib/modules/mousetrap/mousetrap.js",
+            "lib/modules/lodash/dist/lodash.js",
+            "lib/modules/momentjs/moment.js",
+            "lib/modules/ngInfiniteScroll/build/ng-infinite-scroll.js",
+            "lib/modules/perfect-scrollbar/js/perfect-scrollbar.jquery.js",
+            "lib/modules/perfect-scrollbar/js/perfect-scrollbar.js",
+            "lib/modules/select2/select2.js",
+            "lib/modules/spectrum/spectrum.js",
+            "lib/modules/route-recognizer/dist/route-recognizer.js",
+            "lib/modules/spin-js/spin.js",
+
+            "lib/modules/angular-ui-grid/ui-grid.js",
+
+            "lib/modules/jqwidgets-angular/jqwidgets.js",
+
+            "app/app.js",
+            "app/app.config.js",
+            "app/app.routes.js",
+            "app/**/*.module.js",
+            "app/**/*.controller.js",
+            "app/**/*.service.js",
+            "app/**/*.filter.js",
+            "app/**/*.directive.js",
+            "app/**/*.spec.js"
+        ]
+    },
+
+    "filesToWatch": [
+        "app/**/*.js",
+        "app/**/*.css",
+        "app/**/*.html",
+        "index.html"
+    ]
+}

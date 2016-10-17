@@ -1,0 +1,19 @@
+{
+  "yes": "Yes",
+  "no": "No",
+  "add": "Add",
+  "save": "Save",
+  "copy": "Copy",
+  "edit": "Edit",
+  "delete": "Delete",
+  "cancel": "Cancel",
+  "open": "Open",
+  "noData": "No data",
+  "search": "Search",
+  "select": "Select",
+  "confirm": "Confirm",
+  "code": "Code",
+  "fullName": "Fullname",
+  "authorize": "Authorize",
+  "studentInternships": "Student internships"
+}

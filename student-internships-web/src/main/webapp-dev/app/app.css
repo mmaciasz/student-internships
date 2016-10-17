@@ -1,0 +1,34 @@
+.text-align-right {
+    text-align: right;
+}
+
+.margin {
+    margin: 10px;
+}
+
+.errorPage {
+    position: absolute;
+    left: 35%;
+    top: 35%;
+    height: 200px;
+    width: 400px;
+    text-align: center;
+}
+
+.errorPageImage {
+    background: url("../assets/images/dunno.gif") 0 0 no-repeat;
+    width: 500px;
+    height: 282px;
+}
+
+.red {
+    color: #f00;
+}
+
+.yellow {
+    color: #edac46;
+}
+
+.width95 {
+    width: 95%;
+}

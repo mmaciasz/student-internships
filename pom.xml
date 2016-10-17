@@ -19,8 +19,18 @@
     </parent>
 
     <properties>
+        <gulp.default.task>build</gulp.default.task>
         <java.version>1.8</java.version>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>debug</id>
+            <properties>
+                <gulp.default.task>build-debug</gulp.default.task>
+            </properties>
+        </profile>
+    </profiles>
 
     <repositories>
         <repository>
