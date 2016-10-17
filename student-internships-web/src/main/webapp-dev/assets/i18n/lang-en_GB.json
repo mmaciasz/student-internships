@@ -15,5 +15,6 @@
   "code": "Code",
   "fullName": "Fullname",
   "authorize": "Authorize",
+  "somethingWentWrong": "Something went wrong",
   "studentInternships": "Student internships"
 }
