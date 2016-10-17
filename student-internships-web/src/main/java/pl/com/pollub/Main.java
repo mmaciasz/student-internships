@@ -10,7 +10,7 @@ import org.springframework.context.ApplicationContext;
 @SpringBootApplication(scanBasePackages = "pl.com.pollub")
 public class Main {
 
-    public static ApplicationContext appContext;
+    private static ApplicationContext appContext;
 
     public static void main(String[] args) {
         appContext = SpringApplication.run(Main.class, args);
