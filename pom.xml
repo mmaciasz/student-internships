@@ -16,6 +16,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.4.1.RELEASE</version>
+        <relativePath/>
     </parent>
 
     <properties>
@@ -38,29 +39,12 @@
             <url>https://repo.spring.io/libs-release</url>
         </repository>
     </repositories>
+
     <pluginRepositories>
         <pluginRepository>
             <id>spring-releases</id>
             <url>https://repo.spring.io/libs-release</url>
         </pluginRepository>
     </pluginRepositories>
-
-    <dependencyManagement>
-        <dependencies>
-
-            <dependency>
-                <groupId>org.postgresql</groupId>
-                <artifactId>postgresql</artifactId>
-                <version>9.4.1211</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.h2database</groupId>
-                <artifactId>h2</artifactId>
-                <version>1.4.192</version>
-            </dependency>
-
-        </dependencies>
-    </dependencyManagement>
 
 </project>
