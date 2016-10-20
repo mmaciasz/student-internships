@@ -4,7 +4,8 @@
     angular
         .module('studentInternships', [
             'ngRoute',
-            'pascalprecht.translate'
+            'pascalprecht.translate',
+            'ui.bootstrap'
         ]);
 
 })();
