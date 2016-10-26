@@ -3,7 +3,8 @@ package pl.com.pollub.db.entities;
 import pl.com.pollub.practice.PracticeStatus;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 /**
  * Created by Maciek on 2016-10-23.
@@ -31,12 +32,12 @@ public class Practice {
     private String academicYear;
 
     @Column(nullable = false)
-    private Date startDt;
+    private LocalDate startDt;
 
     @Column(nullable = false)
-    private Date stopDt;
+    private LocalDate stopDt;
 
-    private Double note;
+    private BigDecimal note;
 
     @Column(nullable = false, length = 20)
     @Enumerated(EnumType.STRING)
@@ -93,27 +94,27 @@ public class Practice {
         this.academicYear = academicYear;
     }
 
-    public Date getStartDt() {
+    public LocalDate getStartDt() {
         return startDt;
     }
 
-    public void setStartDt(Date startDt) {
+    public void setStartDt(LocalDate startDt) {
         this.startDt = startDt;
     }
 
-    public Date getStopDt() {
+    public LocalDate getStopDt() {
         return stopDt;
     }
 
-    public void setStopDt(Date stopDt) {
+    public void setStopDt(LocalDate stopDt) {
         this.stopDt = stopDt;
     }
 
-    public Double getNote() {
+    public BigDecimal getNote() {
         return note;
     }
 
-    public void setNote(Double note) {
+    public void setNote(BigDecimal note) {
         this.note = note;
     }
 

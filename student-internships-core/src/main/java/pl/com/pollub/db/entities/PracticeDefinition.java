@@ -15,7 +15,7 @@ public class PracticeDefinition {
     private Integer practiceDefinitionId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    private Firm firm;
+    private Firm firmId;
 
     @Column(nullable = false, length = 20)
     @Enumerated(EnumType.STRING)
@@ -35,12 +35,12 @@ public class PracticeDefinition {
         this.practiceDefinitionId = practiceDefinitionId;
     }
 
-    public Firm getFirm() {
-        return firm;
+    public Firm getFirmId() {
+        return firmId;
     }
 
-    public void setFirm(Firm firm) {
-        this.firm = firm;
+    public void setFirmId(Firm firmId) {
+        this.firmId = firmId;
     }
 
     public PracticeDefinitionStatus getStatus() {

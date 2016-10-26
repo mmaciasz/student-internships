@@ -1,7 +1,7 @@
 package pl.com.pollub.db.entities;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * Created by Maciek on 2016-10-23.
@@ -14,13 +14,13 @@ public class TimetableNode {
     private Integer timetableNodeId;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Practice practice;
+    private Practice practiceId;
 
     private Integer type;
 
-    private Date startDt;
+    private LocalDateTime startDt;
 
-    private Date stopDt;
+    private LocalDateTime stopDt;
 
     @Column(columnDefinition = "TEXT")
     private String description;
@@ -36,12 +36,12 @@ public class TimetableNode {
         this.timetableNodeId = timetableNodeId;
     }
 
-    public Practice getPractice() {
-        return practice;
+    public Practice getPracticeId() {
+        return practiceId;
     }
 
-    public void setPractice(Practice practice) {
-        this.practice = practice;
+    public void setPracticeId(Practice practiceId) {
+        this.practiceId = practiceId;
     }
 
     public Integer getType() {
@@ -52,19 +52,19 @@ public class TimetableNode {
         this.type = type;
     }
 
-    public Date getStartDt() {
+    public LocalDateTime getStartDt() {
         return startDt;
     }
 
-    public void setStartDt(Date startDt) {
+    public void setStartDt(LocalDateTime startDt) {
         this.startDt = startDt;
     }
 
-    public Date getStopDt() {
+    public LocalDateTime getStopDt() {
         return stopDt;
     }
 
-    public void setStopDt(Date stopDt) {
+    public void setStopDt(LocalDateTime stopDt) {
         this.stopDt = stopDt;
     }
 

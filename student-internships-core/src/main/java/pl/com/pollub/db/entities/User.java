@@ -16,7 +16,7 @@ public class User {
     private Integer UserId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Firm firm;
+    private Firm firmId;
 
     @Column(length = 100)
     private String login;
@@ -60,12 +60,12 @@ public class User {
         UserId = userId;
     }
 
-    public Firm getFirm() {
-        return firm;
+    public Firm getFirmId() {
+        return firmId;
     }
 
-    public void setFirm(Firm firm) {
-        this.firm = firm;
+    public void setFirmId(Firm firmId) {
+        this.firmId = firmId;
     }
 
     public String getLogin() {
