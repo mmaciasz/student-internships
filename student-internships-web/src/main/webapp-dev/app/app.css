@@ -2,8 +2,12 @@
     text-align: right;
 }
 
-.margin {
-    margin: 10px;
+.nav > li {
+    padding: 5px;
+}
+
+.topMenu {
+    margin: 1% auto;
 }
 
 .errorPage {

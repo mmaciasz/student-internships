@@ -9,8 +9,8 @@
 
 </head>
 <body>
-<div ng-controller="AuthController as auth" class="container">
-    <ul class="nav nav-pills" role="tablist">
+<div ng-controller="AuthController as auth" class="container topMenu pull-right">
+    <ul class="nav nav-pills row" role="tablist">
         <li class="active"><a href="#/">{{'homePage' | translate}}</a></li>
         <li ng-hide="authenticated"><a href="#/home">{{'login' | translate}}</a></li>
         <li ng-show="authenticated"><a href="" ng-click="auth.logout()">{{'logout' | translate}}</a></li>
