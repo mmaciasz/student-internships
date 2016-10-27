@@ -13,6 +13,7 @@
         vm.credentials = {};
 
         vm.authenticate = authenticate;
+        vm.logout = logout;
         vm.login = login;
 
         authenticate();
@@ -42,6 +43,13 @@
                     $location.path("/home");
                     vm.error = true;
                 }
+            });
+        }
+
+        function logout() {
+            $http.post('logout', {}).finally(function() {
+                $rootScope.authenticated = false;
+                $location.path("/home");
             });
         }
 

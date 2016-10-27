@@ -44,7 +44,7 @@ public class TestController {
 
 
     /** TODO Do wyj... niczym kalendarz */
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/testData", method = RequestMethod.GET)
     public String getUsers() {
 
         Iterable<User> users = userRepository.findAll();

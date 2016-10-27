@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="pl" ng-app="studentInternships" class="no-js">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title ng-bind="'studentInternships' | translate"></title>
-  <!-- inject:css -->
-  <!-- endinject -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title ng-bind="'studentInternships' | translate"></title>
+    <!-- inject:css -->
+    <!-- endinject -->
 
 </head>
 <body>
-<div ng-view></div>
+<div ng-controller="AuthController as auth" class="container">
+    <ul class="nav nav-pills" role="tablist">
+        <li class="active"><a href="#/">{{'homePage' | translate}}</a></li>
+        <li ng-hide="authenticated"><a href="#/home">{{'login' | translate}}</a></li>
+        <li ng-show="authenticated"><a href="" ng-click="auth.logout()">{{'logout' | translate}}</a></li>
+    </ul>
+</div>
+<div ng-view class="container"></div>
 
 <!-- inject:js -->
 <!-- endinject -->
