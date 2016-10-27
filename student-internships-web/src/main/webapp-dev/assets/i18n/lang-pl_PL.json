@@ -21,5 +21,6 @@
   "password": "Hasło",
   "backToHome": "Powrót do strony głównej",
   "somethingWentWrong": "Coś poszło nie tak!",
-  "studentInternships": "Praktyki studenckie"
+  "studentInternships": "Praktyki studenckie",
+  "loginProblem": "Użytkownik lub hasło są nieprawidłowe. \nSpróbuj ponownie."
 }

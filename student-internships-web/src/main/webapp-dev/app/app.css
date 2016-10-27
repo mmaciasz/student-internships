@@ -32,3 +32,8 @@
 .width95 {
     width: 95%;
 }
+
+.loginForm {
+    width: 30%;
+    margin: 15% auto;
+}

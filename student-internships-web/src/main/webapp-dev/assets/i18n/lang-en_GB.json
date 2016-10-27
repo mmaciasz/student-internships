@@ -21,5 +21,6 @@
   "password": "Password",
   "backToHome": "Back to home page",
   "somethingWentWrong": "Something went wrong",
-  "studentInternships": "Student internships"
+  "studentInternships": "Student internships",
+  "loginProblem": "There was a problem logging in. \nPlease try again."
 }
