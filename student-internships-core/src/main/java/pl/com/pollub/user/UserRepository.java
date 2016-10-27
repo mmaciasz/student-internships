@@ -9,4 +9,6 @@ import pl.com.pollub.db.entities.User;
  */
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
+
+    User findFirstByLogin(String login);
 }

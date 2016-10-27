@@ -5,7 +5,8 @@
         .module('studentInternships', [
             'ngRoute',
             'pascalprecht.translate',
-            'ui.bootstrap'
+            'ui.bootstrap',
+            'auth'
         ]);
 
 })();

@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 public class TimetableNode {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer timetableNodeId;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)

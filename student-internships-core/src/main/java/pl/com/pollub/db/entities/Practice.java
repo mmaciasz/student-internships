@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class Practice {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer practiceId;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)

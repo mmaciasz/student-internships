@@ -2,17 +2,24 @@
     'use strict';
 
     angular.module('studentInternships')
-        .config(['$routeProvider',
-            function ($routeProvider) {
+        .config(['$routeProvider', '$httpProvider',
+            function ($routeProvider, $httpProvider) {
 
-                $routeProvider.when('/errorPage', {
+                $routeProvider.when('/error', {
                     templateUrl: 'app/errorPage.html'
                 });
 
-                $routeProvider.otherwise({
-                    redirectTo: '/errorPage'
+                $routeProvider.when('/home', {
+                    templateUrl: 'app/home/loginForm.html',
+                    controller: 'AuthController',
+                    controllerAs: 'authCtrl'
                 });
 
+                $routeProvider.otherwise({
+                    redirectTo: '/error'
+                });
+
+                $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
             }
         ]);
 

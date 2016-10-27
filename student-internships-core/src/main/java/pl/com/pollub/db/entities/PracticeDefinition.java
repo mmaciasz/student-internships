@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class PracticeDefinition {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer practiceDefinitionId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
