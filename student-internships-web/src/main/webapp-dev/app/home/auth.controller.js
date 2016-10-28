@@ -16,14 +16,12 @@
         vm.logout = logout;
         vm.login = login;
 
-        authenticate();
+        checkAuthorize();
         ////////////////
 
         function authenticate(credentials, callback) {
 
-            var headers = credentials ? {
-                authorization: "Basic " + btoa(credentials.username + ":" + credentials.password)
-            } : {};
+            var headers = credentials ? {authorization: "Basic " + btoa(credentials.username + ":" + credentials.password)} : {};
 
             $http.get('user', {headers: headers}).then(function (response) {
                 $rootScope.authenticated = !!response.data.name;
@@ -53,6 +51,16 @@
             });
         }
 
+        function checkAuthorize() {
+            authenticate(null, function () {
+                if ($rootScope.authenticated) {
+                    $location.path("/");
+                    vm.error = false;
+                } else {
+                    $location.path("/home");
+                }
+            });
+        }
     }
 
 })();

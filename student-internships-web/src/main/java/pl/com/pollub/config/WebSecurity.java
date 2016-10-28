@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import pl.com.pollub.user.UserType;
 
 /**
  * Created by mmaciasz on 2016-10-26.
@@ -30,9 +31,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http.httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/students/**").hasAnyAuthority("STUDENT", "TUTOR", "ADMIN")
-                .antMatchers("/firm/**").hasAnyAuthority("FIRM_EMPLOYEE", "ADMIN")
-                .antMatchers("/practice/**").hasAnyAuthority("STUDENT", "ADMIN")
+                .antMatchers("/students/**").hasAnyAuthority(UserType.STUDENT.name(), UserType.TUTOR.name(), UserType.ADMIN.name())
+                .antMatchers("/firm/**").hasAnyAuthority(UserType.FIRM_EMPLOYEE.name(), UserType.ADMIN.name())
+                .antMatchers("/practice/**").hasAnyAuthority(UserType.STUDENT.name(), UserType.TUTOR.name(), UserType.ADMIN.name())
                 .antMatchers("/", "/app/**", "/assets/**").permitAll()
                 .anyRequest().fullyAuthenticated()
                 .and().csrf()
