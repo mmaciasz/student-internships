@@ -1,0 +1,246 @@
+header{
+	border-bottom: 4px solid #D0D5CB;
+	padding-top: 30px;
+}
+
+.navbar{
+	background-color: #fff !important;
+	border-color: #fff !important;
+	color: #0B1902 !important;
+	font-family: Asap, sans-serif;
+	font-size: 14px;
+	text-transform: uppercase;
+	margin-bottom: 10px !important;
+}
+
+.navbar-header{
+	font-size: 19px;
+}
+
+.navbar-header img{
+	width: 100px;
+}
+
+.search {
+	background: url(/app/images/headerBg.jpg) center 0 no-repeat;
+	color: #FFF;
+}
+
+.search.small{
+	background-position-y: -86px;
+	height: 160px;
+}
+
+.search.small .navbar-form{
+	margin-top: 30px;
+}
+
+.search.small .filter{
+	margin-top: 20px;
+}
+
+.search.big {
+	background-position-y: -86px;
+	height: 380px;
+	font-family: Asap, sans-serif;
+	text-transform: uppercase;
+}
+
+.search.big h1{
+	padding-top: 100px;
+	padding-bottom: 20px;
+	font-size: 39px;
+	font-weight: bold;
+}
+
+.form-signin {
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+}
+
+.form-signin .form-signin-heading, .form-signin .checkbox {
+	margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+	font-weight: normal;
+}
+
+.form-signin .form-control {
+	position: relative;
+	height: auto;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+	z-index: 2;
+}
+
+.form-signin input[type="email"] {
+	margin-bottom: -1px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+	margin-bottom: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+footer{
+	background-color: #EEF2EA;
+	margin-top: 40px;
+	padding-top: 15px;
+}
+
+.copyright{
+	border-top: #D5D7D4 solid 3px;
+	padding: 20px;
+	margin-top: 20px;
+}
+
+.footer-box h2{
+	font-size: 17px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #177BF6;
+}
+
+.footer-box ul{
+	list-style: none;
+	padding: 0;
+}
+
+.footer-box ul li{
+	font-size: 12px;
+	line-height: 25px;
+	color: #75796F;
+}
+
+.boxes{
+	margin-top: 40px;
+}
+
+.boxes .img{
+	font-size: 55px;
+}
+
+.boxes .title{
+	font-size: 20px;
+	height: 52px;
+}
+
+.boxes .desc{
+	height: 60px;
+}
+
+.firms .firm{
+	background-color: #F0F2F1;
+	padding: 15px 10px;
+	margin-top: 15px;
+}
+
+.firms .name{
+	color: #0096BB;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.firms .desc{
+	border-top: 1px solid #E6E6E6;
+	margin-top: 15px;
+}
+
+.firm .categories{
+	font-size: 12px;
+	color: #8C8C8C;
+}
+
+.container.account {
+	margin-top: 30px;
+}
+
+a.addItem{
+	margin: 10px 0 10px 0;
+}
+
+.btn.confirm {
+	float:right;
+}
+
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 2px;
+} 
+
+form label.control-label span{
+	color: red;'
+}
+
+.rating-disabled{
+	cursor: default !important;
+}
+
+.msg-box{
+	width: 600px;
+	margin: 20px auto 0;
+}
+
+.mandatoryInfo {
+	margin-top: 23px;
+	font-size: 12px;
+}
+
+.mandatoryInfo span{
+	color: red;
+}
+
+a.cal-event-week {
+	display: block;
+}
+
+input.error {
+	border-color: red;
+}
+
+#addOpinion .error{
+	color: red;
+	font-size: 12px;
+	display: none;
+}
+
+.promo-firm{
+	border: 1px solid #E6E6E6;
+	margin-bottom: 15px;
+	padding: 10px;
+}
+
+.promo-firm .name {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+h4.promoted-firms {
+	margin: 55px 0 20px 0;
+}
+
+.hr{
+	border-top: 1px solid #D0D5CB;
+	margin-top: 70px;
+}
+
+#map_container{
+	height: 350px;
+	margin-top: 10px;
+}

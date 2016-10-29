@@ -19,26 +19,30 @@
         checkAuthorize();
         ////////////////
 
+        // nie wiem gdzie to wrzucic, moze jest na to lepsze miejsce...
+        $rootScope.isAuthorized = function() {
+            return $rootScope.loggedUser !== undefined && $rootScope.loggedUser !== null;
+        }
+
         function authenticate(credentials, callback) {
 
             var headers = credentials ? {authorization: "Basic " + btoa(credentials.username + ":" + credentials.password)} : {};
 
             $http.get('user', {headers: headers}).then(function (response) {
-                $rootScope.authenticated = !!response.data.name;
+                $rootScope.loggedUser = new LoggedUser(response.data.name, response.data.authorities[0].authority);
                 callback && callback();
             }, function () {
-                $rootScope.authenticated = false;
                 callback && callback();
             });
         }
 
         function login() {
             authenticate(vm.credentials, function () {
-                if ($rootScope.authenticated) {
-                    $location.path("/");
+                if ($rootScope.isAuthorized()) {
+                    $location.path("/home");
                     vm.error = false;
                 } else {
-                    $location.path("/home");
+                    $location.path("/");
                     vm.error = true;
                 }
             });
@@ -46,18 +50,18 @@
 
         function logout() {
             $http.post('logout', {}).finally(function() {
-                $rootScope.authenticated = false;
-                $location.path("/home");
+                delete $rootScope.loggedUser;
+                $location.path("/");
             });
         }
 
         function checkAuthorize() {
             authenticate(null, function () {
-                if ($rootScope.authenticated) {
-                    $location.path("/");
+                if ($rootScope.isAuthorized()) {
+                    $location.path("/home");
                     vm.error = false;
                 } else {
-                    $location.path("/home");
+                    $location.path("/");
                 }
             });
         }

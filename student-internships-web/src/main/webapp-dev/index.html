@@ -9,14 +9,55 @@
 
 </head>
 <body>
-<div ng-controller="AuthController as auth" class="container topMenu pull-right">
-    <ul class="nav nav-pills row" role="tablist">
-        <li class="active"><a href="#/">{{'homePage' | translate}}</a></li>
-        <li ng-hide="authenticated"><a href="#/home">{{'login' | translate}}</a></li>
-        <li ng-show="authenticated"><a href="" ng-click="auth.logout()">{{'logout' | translate}}</a></li>
-    </ul>
+
+<header>
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-default" role="navigation">
+                <div ng-controller="AuthController as auth" class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <a href="<%=request.getContextPath()%>/">
+                            <img src="assets/images/logoPL.png" />
+                        </a>
+                        System praktyk studenckich
+                    </div>
+                    <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">STRONA GŁÓWNA</a></li>
+                            <li><a href="#">KONTAKT</a></li>
+                            <li ng-hide="isAuthorized()"><a href="#">ZALOGUJ SIĘ</a></li>
+                            <li ng-show="isAuthorized()"><a href="" ng-click="auth.logout()">{{'logout' | translate}}</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+
+<div ng-if="isAuthorized()" class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <ng-include src="'app/menu.html'"/>
+        </div>
+        <div ng-view class="col-md-10"></div>
+    </div>
 </div>
-<div ng-view class="container"></div>
+
+<div ng-if="!isAuthorized()" ng-view class="container"></div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center copyright">
+                <p>
+                    © <span id="copyright-year">Kołodziej Maciasz</span><br>
+                    <!--{%FOOTER_LINK} -->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
 
 <!-- inject:js -->
 <!-- endinject -->

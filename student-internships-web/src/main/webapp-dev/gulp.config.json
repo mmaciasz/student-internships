@@ -12,7 +12,8 @@
     "includes": {
         "css": [
             "bower_components/bootstrap/dist/css/bootstrap.css",
-            "app/app.css"
+            "app/app.css",
+            "app/main.css"
         ],
         "js": [
             "bower_components/angular/angular.js",
@@ -32,7 +33,8 @@
             "app/**/*.service.js",
             "app/**/*.filter.js",
             "app/**/*.directive.js",
-            "app/**/*.spec.js"
+            "app/**/*.spec.js",
+            "app/auth/*.js"
         ]
     },
 

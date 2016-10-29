@@ -9,10 +9,14 @@
                     templateUrl: 'app/errorPage.html'
                 });
 
-                $routeProvider.when('/home', {
+                $routeProvider.when('/', {
                     templateUrl: 'app/home/loginForm.html',
                     controller: 'AuthController',
                     controllerAs: 'authCtrl'
+                });
+
+                $routeProvider.when('/home', {
+                    templateUrl: 'app/home/home.html'
                 });
 
                 $routeProvider.otherwise({
