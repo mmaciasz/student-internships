@@ -6,3 +6,4 @@ student-internships-web/src/main/webapp-dev/node_modules/
 student-internships-web/src/main/webapp-dev/node/
 student-internships-web/src/main/webapp-dev/bower_components/
 student-internships-web/src/main/resources/static/
+student-internships-web/src/main/resources/myProperties.properties
