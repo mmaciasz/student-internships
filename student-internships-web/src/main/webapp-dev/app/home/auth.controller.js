@@ -22,7 +22,7 @@
         // nie wiem gdzie to wrzucic, moze jest na to lepsze miejsce...
         $rootScope.isAuthorized = function() {
             return $rootScope.loggedUser !== undefined && $rootScope.loggedUser !== null;
-        }
+        };
 
         function authenticate(credentials, callback) {
 

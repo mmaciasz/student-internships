@@ -18,7 +18,7 @@ public class User {
     @ManyToOne(fetch = FetchType.LAZY)
     private Firm firmId;
 
-    @Column(length = 100)
+    @Column(length = 100, unique = true)
     private String login;
 
     @Column(length = 32)
@@ -36,7 +36,7 @@ public class User {
     @Column(length = 45)
     private String phone;
 
-    @Column(length = 45)
+    @Column(length = 45, unique = true)
     private String albumNo;
 
     @Column(length = 45)
