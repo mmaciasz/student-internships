@@ -13,6 +13,7 @@
 .errorPage {
     width: 40%;
     margin: 70px auto;
+    text-align: center;
 }
 
 .errorPageImage {
@@ -36,4 +37,11 @@
 .loginForm {
     width: 30%;
     margin: 70px auto;
+}
+
+.contactPage {
+    width: 80%;
+    margin: 70px auto;
+    text-align: center;
+    font-size: 22px;
 }

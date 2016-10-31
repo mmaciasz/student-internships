@@ -19,6 +19,10 @@
                     templateUrl: 'app/home/home.html'
                 });
 
+                $routeProvider.when('/contact', {
+                    templateUrl: 'app/common/contact.html'
+                });
+
                 $routeProvider.otherwise({
                     redirectTo: '/error'
                 });
