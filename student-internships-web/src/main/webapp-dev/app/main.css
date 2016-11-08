@@ -244,3 +244,7 @@ h4.promoted-firms {
 	height: 350px;
 	margin-top: 10px;
 }
+
+span.required {
+	color: #f00;
+}

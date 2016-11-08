@@ -6,7 +6,8 @@
             'ngRoute',
             'pascalprecht.translate',
             'ui.bootstrap',
-            'auth'
+            'auth',
+            'student'
         ]);
 
 })();

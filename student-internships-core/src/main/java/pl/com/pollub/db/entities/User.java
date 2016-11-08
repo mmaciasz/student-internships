@@ -13,7 +13,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer UserId;
+    private Integer userId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Firm firmId;
@@ -49,15 +49,21 @@ public class User {
     @Column(nullable = false)
     private Boolean active;
 
+    @Transient
+    private String newPassword;
+
+    @Transient
+    private String confirmedNewPassword;
+
     public User() {
     }
 
     public Integer getUserId() {
-        return UserId;
+        return userId;
     }
 
     public void setUserId(Integer userId) {
-        UserId = userId;
+        this.userId = userId;
     }
 
     public Firm getFirmId() {
@@ -146,5 +152,21 @@ public class User {
 
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+
+    public String getConfirmedNewPassword() {
+        return confirmedNewPassword;
+    }
+
+    public void setConfirmedNewPassword(String confirmedNewPassword) {
+        this.confirmedNewPassword = confirmedNewPassword;
     }
 }

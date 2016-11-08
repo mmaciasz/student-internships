@@ -1,0 +1,87 @@
+<div>
+    <!--<div class="alert alert-danger" ng-show="authCtrl.error">-->
+        <!--{{'loginProblem' | translate}}-->
+    <!--</div>-->
+    <form role="form" class="form-horizontal" ng-submit="studentCtrl.save()">
+        <div class="form-group">
+            <label for="firstName" class="col-sm-2 control-label">
+                Imie:
+                <span class="required">*</span>
+            </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="firstName" placeholder="Imie" ng-model="studentCtrl.student.firstName" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName" class="col-sm-2 control-label">
+                Nazwisko:
+                <span class="required">*</span>
+            </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="lastName" placeholder="Nazwisko" ng-model="studentCtrl.student.lastName" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">
+                Email:
+                <span class="required">*</span>
+            </label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" placeholder="Email" ng-model="studentCtrl.student.email" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phone" class="col-sm-2 control-label">Telefon kontaktowy:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="phone" placeholder="Telefon kontaktowy" ng-model="studentCtrl.student.phone"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="albumNo" class="col-sm-2 control-label">
+                Numer albumu:
+                <span class="required">*</span>
+            </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="albumNo" placeholder="Numer albumu" ng-model="studentCtrl.student.albumNo" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="nationalNo" class="col-sm-2 control-label">Pesel:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="nationalNo" placeholder="Pesel" ng-model="studentCtrl.student.nationalNo"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="login" class="col-sm-2 control-label">
+                Login:
+                <span class="required">*</span>
+            </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="login" placeholder="Login" ng-model="studentCtrl.student.login" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="newPassword" class="col-sm-2 control-label">
+                Hasło:
+                <span ng-if="studentCtrl.isCreation()" class="required">*</span>
+            </label>
+            <div class="col-sm-10">
+                <input ng-if="studentCtrl.isCreation()" type="password" class="form-control" id="newPassword" placeholder="Hasło" ng-model="studentCtrl.student.newPassword" required/>
+                <input ng-if="!studentCtrl.isCreation()" type="password" class="form-control" id="newPassword" placeholder="Hasło" ng-model="studentCtrl.student.newPassword"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="confirmedNewPassword" class="col-sm-2 control-label">
+                Powtórz hasło:
+                <span ng-if="studentCtrl.isCreation()" class="required">*</span>
+            </label>
+            <div class="col-sm-10">
+                <input ng-if="studentCtrl.isCreation()" type="password" class="form-control" id="confirmedNewPassword" placeholder="Powtórz hasło" ng-model="studentCtrl.student.confirmedNewPassword" required/>
+                <input ng-if="!studentCtrl.isCreation()" type="password" class="form-control" id="confirmedNewPassword" placeholder="Powtórz hasło" ng-model="studentCtrl.student.confirmedNewPassword"/>
+            </div>
+        </div>
+
+        <button class="btn btn-primary pull-left" onclick="window.location.href='#/trainees'">Powrót</button>
+        <button type="submit" class="btn btn-primary pull-right">{{'confirm' | translate}}</button>
+    </form>
+</div>

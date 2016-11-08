@@ -19,8 +19,22 @@
                     templateUrl: 'app/home/home.html'
                 });
 
-                $routeProvider.when('/contact', {
-                    templateUrl: 'app/common/contact.html'
+                $routeProvider.when('/trainees', {
+                    templateUrl: 'app/student/studentList.html',
+                    controller: 'StudentListController',
+                    controllerAs: 'studentCtrl'
+                });
+
+                $routeProvider.when('/trainees/:id', {
+                    templateUrl: 'app/student/studentForm.html',
+                    controller: 'StudentDetailsController',
+                    controllerAs: 'studentCtrl'
+                });
+
+                $routeProvider.when('/trainees/create', {
+                    templateUrl: 'app/student/studentForm.html',
+                    controller: 'StudentDetailsController',
+                    controllerAs: 'studentCtrl'
                 });
 
                 $routeProvider.otherwise({

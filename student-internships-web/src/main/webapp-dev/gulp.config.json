@@ -42,6 +42,8 @@
         "app/**/*.js",
         "app/**/*.css",
         "app/**/*.html",
-        "index.html"
+        "index.html",
+        "app/*.js",
+        "app/*.html"
     ]
 }
