@@ -5,7 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.com.pollub.db.entities.Firm;
+import pl.com.pollub.db.entities.User;
 import pl.com.pollub.firm.FirmService;
+import pl.com.pollub.user.UserType;
 
 import java.util.List;
 
@@ -57,4 +59,42 @@ public class FirmContoller {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @RequestMapping(value = "/employee/", method = RequestMethod.GET)
+    public List<User> findAllEmployees() {
+        return firmService.findAllEmployees();
+    }
+
+    @RequestMapping(value = "/employee/{id}", method = RequestMethod.GET)
+    public User findOneEmployee(@PathVariable("id") Integer id) {
+        return firmService.findEmployeeById(id);
+    }
+
+    @RequestMapping(value = "/employee/{id}", method = RequestMethod.DELETE)
+    public void deleteEmployee(@PathVariable("id") Integer id) {
+        firmService.deleteEmployee(id);
+    }
+
+    @RequestMapping(value = "/employee/", method = RequestMethod.PUT)
+    public ResponseEntity<User> updateEmployee(@RequestBody User user) {
+        return saveOrUpdateEmployee(user);
+    }
+
+    @RequestMapping(value = "/employee/", method = RequestMethod.POST)
+    public ResponseEntity<User> saveEmployee(@RequestBody User user) {
+        user.setActive(true);
+        user.setUserType(UserType.FIRM_EMPLOYEE);
+        return saveOrUpdateEmployee(user);
+    }
+
+    private ResponseEntity<User> saveOrUpdateEmployee(User user) {
+        try {
+            User savedEmployee = firmService.saveEmployee(user);
+            return new ResponseEntity<>(savedEmployee, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }

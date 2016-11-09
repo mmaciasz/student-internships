@@ -59,6 +59,24 @@
                     controllerAs: 'firmDetCtrl'
                 });
 
+                $routeProvider.when('/employee', {
+                    templateUrl: 'app/firm/employeeList.html',
+                    controller: 'EmployeeController',
+                    controllerAs: 'empCtrl'
+                });
+
+                $routeProvider.when('/employee/:id', {
+                    templateUrl: 'app/firm/employeeDetails.html',
+                    controller: 'EmployeeDetailsController',
+                    controllerAs: 'empDetCtrl'
+                });
+
+                $routeProvider.when('/employee/create', {
+                    templateUrl: 'app/firm/employeeDetails.html',
+                    controller: 'EmployeeDetailsController',
+                    controllerAs: 'empDetCtrl'
+                });
+
                 $routeProvider.otherwise({
                     redirectTo: '/error'
                 });
