@@ -14,6 +14,7 @@ import pl.com.pollub.user.UserType;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -75,13 +76,13 @@ public class FirmService {
     }
 
     private boolean validate(User user) {
-        if("".equals(user.getNewPassword())) {
+        if ("".equals(user.getNewPassword())) {
             user.setNewPassword(null);
         }
-        if("".equals(user.getConfirmedNewPassword())) {
+        if ("".equals(user.getConfirmedNewPassword())) {
             user.setConfirmedNewPassword(null);
         }
-        return Objects.equals(user.getNewPassword(), user.getConfirmedNewPassword());
-
+        Optional<User> existingUser = Optional.ofNullable(userRepository.findFirstByLogin(user.getLogin()));
+        return !existingUser.isPresent() && Objects.equals(user.getNewPassword(), user.getConfirmedNewPassword());
     }
 }
