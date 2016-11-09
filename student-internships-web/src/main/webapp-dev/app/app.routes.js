@@ -19,6 +19,10 @@
                     templateUrl: 'app/home/home.html'
                 });
 
+                $routeProvider.when('/contact', {
+                    templateUrl: 'app/common/contact.html'
+                });
+
                 $routeProvider.when('/trainees', {
                     templateUrl: 'app/student/studentList.html',
                     controller: 'StudentListController',
@@ -35,6 +39,24 @@
                     templateUrl: 'app/student/studentForm.html',
                     controller: 'StudentDetailsController',
                     controllerAs: 'studentCtrl'
+                });
+
+                $routeProvider.when('/firm', {
+                    templateUrl: 'app/firm/firmList.html',
+                    controller: 'FirmController',
+                    controllerAs: 'firmCtrl'
+                });
+
+                $routeProvider.when('/firm/:id', {
+                    templateUrl: 'app/firm/firmDetails.html',
+                    controller: 'FirmDetailsController',
+                    controllerAs: 'firmDetCtrl'
+                });
+
+                $routeProvider.when('/firm/create', {
+                    templateUrl: 'app/firm/firmDetails.html',
+                    controller: 'FirmDetailsController',
+                    controllerAs: 'firmDetCtrl'
                 });
 
                 $routeProvider.otherwise({

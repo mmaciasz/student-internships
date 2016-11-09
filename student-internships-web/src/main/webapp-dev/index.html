@@ -17,16 +17,16 @@
                 <div ng-controller="AuthController as auth" class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
-                        <a href="<%=request.getContextPath()%>/">
+                        <a href="#">
                             <img src="assets/images/logoPL.png" />
                         </a>
                         System praktyk studenckich
                     </div>
                     <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">STRONA GŁÓWNA</a></li>
-                            <li><a href="#">KONTAKT</a></li>
-                            <li ng-hide="isAuthorized()"><a href="#">ZALOGUJ SIĘ</a></li>
-                            <li ng-show="isAuthorized()"><a href="" ng-click="auth.logout()">{{'logout' | translate}}</a></li>
+                        <li><a href="#">STRONA GŁÓWNA</a></li>
+                        <li ng-hide="isAuthorized()"><a href="#/contact">KONTAKT</a></li>
+                        <li ng-hide="isAuthorized()"><a href="#/">{{'login' | translate}}</a></li>
+                        <li ng-show="isAuthorized()"><a href="" ng-click="auth.logout()">{{'logout' | translate}}</a></li>
                     </ul>
                 </div>
             </nav>

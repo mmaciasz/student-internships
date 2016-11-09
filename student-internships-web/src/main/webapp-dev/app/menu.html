@@ -2,10 +2,10 @@
     <li ng-show="loggedUser.isAdmin()">
         <a href="/#/trainees">Ewidencja praktykantów</a>
     </li>
-    <li ng-show="loggedUser.isStudent()">
-        <a href="<%=request.getContextPath()%>/admin/category/view">To widzi student</a>
-    </li>
     <li ng-show="loggedUser.isAdmin()">
-        <a href="<%=request.getContextPath()%>/admin/advertisement/view">To też widzi admin</a>
+        <a href="/#/firm">Ewidencja firm</a>
+    </li>
+    <li ng-show="loggedUser.isStudent()">
+        <a href="#">To widzi student</a>
     </li>
 </ul>

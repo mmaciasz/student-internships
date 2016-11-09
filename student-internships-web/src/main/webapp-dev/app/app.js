@@ -7,7 +7,8 @@
             'pascalprecht.translate',
             'ui.bootstrap',
             'auth',
-            'student'
+            'student',
+            'firm'
         ]);
 
 })();
