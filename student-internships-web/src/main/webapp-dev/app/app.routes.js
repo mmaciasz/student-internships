@@ -77,6 +77,24 @@
                     controllerAs: 'empDetCtrl'
                 });
 
+                $routeProvider.when('/tutors', {
+                    templateUrl: 'app/tutor/tutorList.html',
+                    controller: 'TutorListController',
+                    controllerAs: 'tutorCtrl'
+                });
+
+                $routeProvider.when('/tutors/:id', {
+                    templateUrl: 'app/tutor/tutorForm.html',
+                    controller: 'TutorDetailsController',
+                    controllerAs: 'tutorCtrl'
+                });
+
+                $routeProvider.when('/tutors/create', {
+                    templateUrl: 'app/tutor/tutorForm.html',
+                    controller: 'TutorDetailsController',
+                    controllerAs: 'tutorCtrl'
+                });
+
                 $routeProvider.otherwise({
                     redirectTo: '/error'
                 });

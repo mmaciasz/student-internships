@@ -24,6 +24,10 @@ public class UserService {
         return userRepository.findByUserTypeAndActive(UserType.STUDENT, Boolean.TRUE);
     }
 
+    public List<User> findAllPromoters() {
+        return userRepository.findByUserTypeAndActive(UserType.TUTOR, Boolean.TRUE);
+    }
+
     public User findById(Integer id) {
         return userRepository.findOne(id);
     }

@@ -8,7 +8,8 @@
             'ui.bootstrap',
             'auth',
             'student',
-            'firm'
+            'firm',
+            'tutor'
         ]);
 
 })();

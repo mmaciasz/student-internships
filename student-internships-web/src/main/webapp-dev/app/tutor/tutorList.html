@@ -1,0 +1,34 @@
+
+<button class="btn btn-default" onclick="window.location.href='#/tutors/create'">Dodaj</button>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Lp</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody ng-if="tutorCtrl.tutors.length>0">
+        <tr ng-repeat="tutor in tutorCtrl.tutors">
+            <td>{{$index + 1}}</td>
+            <td>{{tutor.firstName}}</td>
+            <td>{{tutor.lastName}}</td>
+            <td>{{tutor.email}}</td>
+            <td>
+                <a href="#/tutors/{{tutor.userId}}">Edytuj</a>
+                |
+                <a href="" ng-click="tutorCtrl.remove(tutor.userId)">Usuń</a>
+            </td>
+        </tr>
+    </tbody>
+    <tbody ng-if="tutorCtrl.tutors.length == 0">
+        <tr>
+            <td colspan="6">
+                Brak wyników
+            </td>
+        </tr>
+    </tbody>
+</table>
