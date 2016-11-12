@@ -11,6 +11,8 @@
     function EmployeeDetailsController($http, $routeParams, $location) {
         var vm = this;
         vm.employee = {};
+        vm.firms = [];
+        vm.selectedFirm ={};
         vm.edit = edit;
         vm.backToList = backToList;
         vm.save = save;
@@ -24,6 +26,9 @@
                     vm.employee = response.data;
                 });
             }
+            $http.get('/firm/').then(function (response) {
+                vm.firms = response.data;
+            });
         }
 
         function backToList() {
