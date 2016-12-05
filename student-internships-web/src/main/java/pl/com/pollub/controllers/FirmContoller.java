@@ -77,19 +77,24 @@ public class FirmContoller {
 
     @RequestMapping(value = "/employee/", method = RequestMethod.PUT)
     public ResponseEntity<User> updateEmployee(@RequestBody User user) {
-        return saveOrUpdateEmployee(user);
+        return saveOrUpdateEmployee(user, true);
     }
 
     @RequestMapping(value = "/employee/", method = RequestMethod.POST)
     public ResponseEntity<User> saveEmployee(@RequestBody User user) {
         user.setActive(true);
         user.setUserType(UserType.FIRM_EMPLOYEE);
-        return saveOrUpdateEmployee(user);
+        return saveOrUpdateEmployee(user, false);
     }
 
-    private ResponseEntity<User> saveOrUpdateEmployee(User user) {
+    private ResponseEntity<User> saveOrUpdateEmployee(User user, Boolean edited) {
         try {
-            User savedEmployee = firmService.saveEmployee(user);
+            User savedEmployee;
+            if (edited) {
+                savedEmployee = firmService.editEmployee(user);
+            } else {
+                savedEmployee = firmService.saveEmployee(user);
+            }
             return new ResponseEntity<>(savedEmployee, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();

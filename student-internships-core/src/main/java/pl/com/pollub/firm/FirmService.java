@@ -63,11 +63,11 @@ public class FirmService {
     }
 
     public User saveEmployee(User user) throws UnsupportedEncodingException {
-        if(!validate(user)) {
+        if (!validate(user, false)) {
             throw new ValidationException();
         }
 
-        if(!StringUtils.isEmpty(user.getNewPassword())) {
+        if (!StringUtils.isEmpty(user.getNewPassword())) {
             byte[] passwordBytes = user.getNewPassword().getBytes("UTF-8");
             user.setPassword(DigestUtils.md5DigestAsHex(passwordBytes));
         }
@@ -75,12 +75,28 @@ public class FirmService {
         return userRepository.save(user);
     }
 
-    private boolean validate(User user) {
+    public User editEmployee(User user) throws UnsupportedEncodingException {
+        if (!validate(user, true)) {
+            throw new ValidationException();
+        }
+
+        if (!StringUtils.isEmpty(user.getNewPassword())) {
+            byte[] passwordBytes = user.getNewPassword().getBytes("UTF-8");
+            user.setPassword(DigestUtils.md5DigestAsHex(passwordBytes));
+        }
+
+        return userRepository.save(user);
+    }
+
+    private boolean validate(User user, boolean edited) {
         if ("".equals(user.getNewPassword())) {
             user.setNewPassword(null);
         }
         if ("".equals(user.getConfirmedNewPassword())) {
             user.setConfirmedNewPassword(null);
+        }
+        if (edited) {
+            return Objects.equals(user.getNewPassword(), user.getConfirmedNewPassword());
         }
         Optional<User> existingUser = Optional.ofNullable(userRepository.findFirstByLogin(user.getLogin()));
         return !existingUser.isPresent() && Objects.equals(user.getNewPassword(), user.getConfirmedNewPassword());

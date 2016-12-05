@@ -12,7 +12,8 @@
         var vm = this;
         vm.employee = {};
         vm.firms = [];
-        vm.selectedFirm ={};
+        vm.selectedFirm = {};
+        vm.disableFields = false;
         vm.edit = edit;
         vm.backToList = backToList;
         vm.save = save;
@@ -21,14 +22,16 @@
         ////////////////
 
         function onActive() {
-            if(edit()) {
-                $http.get('/firm/employee/' + $routeParams.id).then(function (response) {
-                    vm.employee = response.data;
-                });
-            }
             $http.get('/firm/').then(function (response) {
                 vm.firms = response.data;
             });
+            if(edit()) {
+                $http.get('/firm/employee/' + $routeParams.id).then(function (response) {
+                    vm.employee = response.data;
+                    vm.selectedFirm = vm.employee.firmId;
+                    vm.disableFields = true;
+                });
+            }
         }
 
         function backToList() {
@@ -36,6 +39,7 @@
         }
 
         function save() {
+            vm.employee.firmId = vm.selectedFirm;
             if(!edit()) {
                 $http.post('/firm/employee/', vm.employee).then(onSuccess, onFailure);
             } else {
