@@ -9,7 +9,8 @@
             'auth',
             'student',
             'firm',
-            'tutor'
+            'tutor',
+            'timeTable'
         ]);
 
 })();

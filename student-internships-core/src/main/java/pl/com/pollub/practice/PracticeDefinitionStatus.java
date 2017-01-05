@@ -5,6 +5,9 @@ package pl.com.pollub.practice;
  */
 public enum PracticeDefinitionStatus {
 
+    /** Nowo utworzona przez opiekuna z firmy*/
+    NEW,
+
     /** Aktywna - zaakceptowana przez administratora */
     ACTIVE,
 
@@ -12,8 +15,6 @@ public enum PracticeDefinitionStatus {
     INACTIVE,
 
     /** Odrzucona - temat odrzucony przez administratora */
-    REJECTED
-
+    REJECTED,
     ;
-
 }

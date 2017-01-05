@@ -1,5 +1,7 @@
 package pl.com.pollub.db.entities;
 
+import pl.com.pollub.practice.timetable.TimeTableType;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -16,7 +18,9 @@ public class TimetableNode {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Practice practiceId;
 
-    private Integer type;
+    @Column(nullable = false, length = 20)
+    @Enumerated(EnumType.STRING)
+    private TimeTableType type;
 
     private LocalDateTime startDt;
 
@@ -44,11 +48,11 @@ public class TimetableNode {
         this.practiceId = practiceId;
     }
 
-    public Integer getType() {
+    public TimeTableType getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(TimeTableType type) {
         this.type = type;
     }
 
