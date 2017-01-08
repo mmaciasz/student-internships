@@ -15,8 +15,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
-    @ManyToOne
-    private Firm firmId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "firmId", nullable = true)
+    private Firm firm;
 
     @Column(length = 100, unique = true)
     private String login;
@@ -66,12 +67,12 @@ public class User {
         this.userId = userId;
     }
 
-    public Firm getFirmId() {
-        return firmId;
+    public Firm getFirm() {
+        return firm;
     }
 
-    public void setFirmId(Firm firmId) {
-        this.firmId = firmId;
+    public void setFirm(Firm firm) {
+        this.firm = firm;
     }
 
     public String getLogin() {

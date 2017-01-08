@@ -28,7 +28,7 @@
             if(edit()) {
                 $http.get('/firm/employee/' + $routeParams.id).then(function (response) {
                     vm.employee = response.data;
-                    vm.selectedFirm = vm.employee.firmId;
+                    vm.selectedFirm = vm.employee.firm;
                     vm.disableFields = true;
                 });
             }
@@ -39,7 +39,7 @@
         }
 
         function save() {
-            vm.employee.firmId = vm.selectedFirm;
+            vm.employee.firm = vm.selectedFirm;
             if(!edit()) {
                 $http.post('/firm/employee/', vm.employee).then(onSuccess, onFailure);
             } else {

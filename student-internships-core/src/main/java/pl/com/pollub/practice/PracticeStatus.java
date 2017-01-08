@@ -7,8 +7,20 @@ package pl.com.pollub.practice;
  */
 public enum PracticeStatus {
 
-    ACTIVE
+    /** Waiting for approval by firm eployee */
+    WAITING_FOR_APPROVAL,
 
+    /** Approved by firm employee */
+    APPROVED,
+
+    /** Rejected by firm employee */
+    REJECTED,
+
+    /** Cancelled by firm employee or student */
+    CANCELLED,
+
+    /** Practice was ended */
+    COMPLETED
     ;
 
 }

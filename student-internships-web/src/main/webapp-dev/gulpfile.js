@@ -2,11 +2,11 @@
 
 /**
  * Taski do zbudowania frontendu:
- * - clean        - czyœci katalog docelowy src/main/resources/static
+ * - clean        - czyï¿½ci katalog docelowy src/main/resources/static
  * - build-debug  - buduje strukture aplikacji w src/main/resources/static
  * - build        - buduje strukture aplikacji w src/main/resources/static + minifikuje css i pakuje js
  * - watch        - monitoruje wszystkie pliki js,css i html w katalogu app oraz pliki index.html i login.html
- *                  jeœli ulegn¹ zmianie automatycznie uruchamia task build-debug -- przydatny tylko w czasie developmentu
+ *                  jeï¿½li ulegnï¿½ zmianie automatycznie uruchamia task build-debug -- przydatny tylko w czasie developmentu
  */
 
 var gulp = require('gulp');
@@ -24,6 +24,7 @@ var cfg = require('./gulp.config.json');
 
 cfg.dist.dir.relativeBaseAppPath = cfg.dist.dir.relativeBasePath + cfg.dist.dir.app;
 cfg.dist.dir.assets              = cfg.dist.dir.relativeBasePath + 'assets/';
+cfg.dist.dir.fonts              = cfg.dist.dir.relativeBasePath + 'fonts/';
 cfg.dist.filename.js             = cfg.dist.filename.main + '.js';
 cfg.dist.filename.css            = cfg.dist.filename.main + '.css';
 cfg.dist.filename.minJs          = cfg.dist.filename.main + '-min.js';
@@ -61,6 +62,12 @@ gulp.task('copy-assets', function(){
     ]).pipe( gulp.dest( cfg.dist.dir.assets ) );
 });
 
+gulp.task('copy-fonts', function(){
+    return gulp.src([
+        'bower_components/bootstrap/fonts/*'
+    ]).pipe( gulp.dest( cfg.dist.dir.fonts ) );
+});
+
 gulp.task('copy-view-html-files', function(){
     return gulp.src('app/**/*.html')
         .pipe(gulp.dest( cfg.dist.dir.relativeBaseAppPath ));
@@ -88,6 +95,7 @@ gulp.task('build-debug', [
     'create-single-css',
     'create-single-js',
     'copy-assets',
+    'copy-fonts',
     'copy-view-html-files',
     'create-index-debug'
 ]);

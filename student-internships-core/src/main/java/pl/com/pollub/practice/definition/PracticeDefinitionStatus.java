@@ -1,4 +1,4 @@
-package pl.com.pollub.practice;
+package pl.com.pollub.practice.definition;
 
 /**
  * Created by Maciek on 2016-10-23.
