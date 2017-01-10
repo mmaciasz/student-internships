@@ -51,10 +51,10 @@ public class StudentController {
     private ResponseEntity<User> saveOrUpdate(User user) {
         try{
             User savedUser = userService.saveOrUpdate(user);
-            return new ResponseEntity(savedUser, HttpStatus.OK);
+            return new ResponseEntity<>(savedUser, HttpStatus.OK);
         } catch (Exception ex) {
             ex.printStackTrace();
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 }

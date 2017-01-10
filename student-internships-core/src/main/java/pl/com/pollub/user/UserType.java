@@ -1,5 +1,8 @@
 package pl.com.pollub.user;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Maciek on 2016-10-23.
  */
@@ -15,8 +18,15 @@ public enum UserType {
     FIRM_EMPLOYEE,
 
     /** Administrator */
-    ADMIN
-
+    ADMIN,
     ;
+
+    public static String[] getAllValues() {
+        final List<String> names = new ArrayList<>();
+        for (UserType userType : UserType.values()) {
+            names.add(userType.name());
+        }
+        return names.toArray(new String[]{});
+    }
 
 }
