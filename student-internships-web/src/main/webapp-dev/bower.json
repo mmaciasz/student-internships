@@ -10,6 +10,7 @@
     "angular-translate": "^2.12.1",
     "angular-translate-loader-static-files": "^2.11.0",
     "angular-bootstrap": "^2.2.0",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "jquery-ui": "^1.12.1"
   }
 }

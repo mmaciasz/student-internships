@@ -26,7 +26,7 @@
                         <li><a href="#/">STRONA GŁÓWNA</a></li>
                         <li ng-hide="isAuthorized()"><a href="#/contact">KONTAKT</a></li>
                         <li ng-hide="isAuthorized()"><a href="#/">{{'login' | translate}}</a></li>
-                        <li ng-show="isAuthorized()"><a href="" ng-click="auth.logout()">{{'logout' | translate}}</a></li>
+                        <li ng-show="isAuthorized()"><a href="" ng-click="auth.logout()">{{'logout' | translate}} <span style="text-transform: none;">({{loggedUser.userName}})</span></a></li>
                     </ul>
                 </div>
             </nav>

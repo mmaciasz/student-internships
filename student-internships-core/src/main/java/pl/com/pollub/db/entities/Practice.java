@@ -1,5 +1,6 @@
 package pl.com.pollub.db.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import pl.com.pollub.practice.PracticeStatus;
 
 import javax.persistence.*;
@@ -16,24 +17,30 @@ public class Practice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer practiceId;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private PracticeDefinition practiceDefinitionId;
-
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private User tutorId;
-
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private User studentId;
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "practiceDefinitionId", nullable = false)
+    private PracticeDefinition practiceDefinition;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private User promoterId;
+    @JoinColumn(name = "firmEmployeeId")
+    private User firmEmployee;
+
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "studentId", nullable = false)
+    private User student;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "promoterId")
+    private User promoter;
 
     @Column(length = 12)
     private String academicYear;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(nullable = false)
     private LocalDate startDt;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(nullable = false)
     private LocalDate stopDt;
 
@@ -54,36 +61,36 @@ public class Practice {
         this.practiceId = practiceId;
     }
 
-    public PracticeDefinition getPracticeDefinitionId() {
-        return practiceDefinitionId;
+    public PracticeDefinition getPracticeDefinition() {
+        return practiceDefinition;
     }
 
-    public void setPracticeDefinitionId(PracticeDefinition practiceDefinitionId) {
-        this.practiceDefinitionId = practiceDefinitionId;
+    public void setPracticeDefinition(PracticeDefinition practiceDefinition) {
+        this.practiceDefinition = practiceDefinition;
     }
 
-    public User getTutorId() {
-        return tutorId;
+    public User getFirmEmployee() {
+        return firmEmployee;
     }
 
-    public void setTutorId(User tutorId) {
-        this.tutorId = tutorId;
+    public void setFirmEmployee(User firmEmployee) {
+        this.firmEmployee = firmEmployee;
     }
 
-    public User getStudentId() {
-        return studentId;
+    public User getStudent() {
+        return student;
     }
 
-    public void setStudentId(User studentId) {
-        this.studentId = studentId;
+    public void setStudent(User student) {
+        this.student = student;
     }
 
-    public User getPromoterId() {
-        return promoterId;
+    public User getPromoter() {
+        return promoter;
     }
 
-    public void setPromoterId(User promoterId) {
-        this.promoterId = promoterId;
+    public void setPromoter(User promoter) {
+        this.promoter = promoter;
     }
 
     public String getAcademicYear() {
@@ -124,5 +131,13 @@ public class Practice {
 
     public void setStatus(PracticeStatus status) {
         this.status = status;
+    }
+
+    public boolean isWaitingForApproval() {
+        return PracticeStatus.WAITING_FOR_APPROVAL.equals(status);
+    }
+
+    public boolean isApproved() {
+        return PracticeStatus.APPROVED.equals(status);
     }
 }

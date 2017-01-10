@@ -95,6 +95,42 @@
                     controllerAs: 'tutorCtrl'
                 });
 
+                $routeProvider.when('/internships/subjects/create', {
+                    templateUrl: 'app/practice/definition/practiceDefinitionForm.html',
+                    controller: 'PracticeDefinitionDetailsController',
+                    controllerAs: 'practiceDefCtrl'
+                });
+
+                $routeProvider.when('/internships/subjects', {
+                    templateUrl: 'app/practice/definition/practiceDefinitionList.html',
+                    controller: 'PracticeDefinitionListController',
+                    controllerAs: 'practiceDefCtrl'
+                });
+
+                $routeProvider.when('/internships/subjects/:id', {
+                    templateUrl: 'app/practice/definition/practiceDefinitionForm.html',
+                    controller: 'PracticeDefinitionDetailsController',
+                    controllerAs: 'practiceDefCtrl'
+                });
+
+                $routeProvider.when('/internships/create', {
+                    templateUrl: 'app/practice/practiceForm.html',
+                    controller: 'PracticeDetailsController',
+                    controllerAs: 'practiceCtrl'
+                });
+
+                $routeProvider.when('/internships/', {
+                    templateUrl: 'app/practice/practiceList.html',
+                    controller: 'PracticeListController',
+                    controllerAs: 'practiceCtrl'
+                });
+
+                $routeProvider.when('/internships/:id', {
+                    templateUrl: 'app/practice/practiceForm.html',
+                    controller: 'PracticeDetailsController',
+                    controllerAs: 'practiceCtrl'
+                });
+
                 $routeProvider.otherwise({
                     redirectTo: '/error'
                 });
