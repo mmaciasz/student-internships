@@ -1,6 +1,7 @@
 package pl.com.pollub.user;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,11 +23,12 @@ public enum UserType {
     ;
 
     public static String[] getAllValues() {
-        final List<String> names = new ArrayList<>();
+        String[] strings = {};
         for (UserType userType : UserType.values()) {
-            names.add(userType.name());
+            strings = Arrays.copyOf(strings, strings.length + 1);
+            strings[strings.length - 1] = userType.name();
         }
-        return names.toArray(new String[]{});
+        return strings;
     }
 
 }

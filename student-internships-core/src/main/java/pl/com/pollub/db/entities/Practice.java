@@ -53,6 +53,10 @@ public class Practice {
     public Practice() {
     }
 
+    public Practice(Integer practiceId) {
+        this.practiceId = practiceId;
+    }
+
     public Integer getPracticeId() {
         return practiceId;
     }

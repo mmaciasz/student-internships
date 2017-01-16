@@ -17,7 +17,6 @@ public class Main {
 
     public static void main(String[] args) {
         appContext = SpringApplication.run(Main.class, args);
-        UserType.getAllValues();
     }
 
     public static ApplicationContext getAppContext() {

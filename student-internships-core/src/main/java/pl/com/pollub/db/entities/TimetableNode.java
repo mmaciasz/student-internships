@@ -15,7 +15,8 @@ public class TimetableNode {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer timetableNodeId;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "practiceId", nullable = false)
     private Practice practiceId;
 
     @Column(nullable = false, length = 20)

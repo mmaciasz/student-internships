@@ -2,13 +2,12 @@
     'use strict';
 
     angular
-        .module('timeTable')
-        .controller('TimeTableController', TimeTableController);
+        .module('timeTable').controller('DiaryController', DiaryController);
 
-    TimeTableController.$inject = ['$scope'];
+    DiaryController.$inject = ['$http'];
 
     /* @ngInject */
-    function TimeTableController($scope) {
+    function DiaryController($http) {
         var vm = this;
 
         activate();

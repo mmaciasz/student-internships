@@ -5,10 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.com.pollub.db.entities.TimetableNode;
 import pl.com.pollub.practice.timetable.TimeTableService;
 import pl.com.pollub.practice.timetable.TimeTableType;
@@ -31,42 +28,42 @@ public class TimeTableController {
         this.timeTableService = timeTableService;
     }
 
-    @RequestMapping(value = "findSchedule", method = RequestMethod.GET)
-    public List<TimetableNode> findSchedule(final Integer practiceId) {
+    @RequestMapping(value = "/findSchedule/{id}", method = RequestMethod.GET)
+    public List<TimetableNode> findSchedule(@PathVariable("id") final Integer practiceId) {
         return timeTableService.findSchedule4Practice(practiceId);
     }
 
-    @RequestMapping(value = "saveSchedule", method = RequestMethod.POST)
+    @RequestMapping(value = "/saveSchedule", method = RequestMethod.POST)
     public ResponseEntity<List<TimetableNode>> saveSchedule(@RequestBody final List<TimetableNode> scheduleNodes) {
         return saveOrUpdateTimeTable(scheduleNodes, TimeTableType.SCHEDULE);
     }
 
-    @RequestMapping(value = "editSchedule", method = RequestMethod.PUT)
+    @RequestMapping(value = "/editSchedule", method = RequestMethod.PUT)
     public ResponseEntity<List<TimetableNode>> editSchedule(@RequestBody final List<TimetableNode> scheduleNodes) {
         return saveOrUpdateTimeTable(scheduleNodes, TimeTableType.SCHEDULE);
     }
 
-    @RequestMapping(value = "deleteSchedule", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/deleteSchedule", method = RequestMethod.DELETE)
     public void deleteSchedule(final List<TimetableNode> scheduleNodes) {
         timeTableService.deleteSchedule(scheduleNodes);
     }
 
-    @RequestMapping(value = "findDiary", method = RequestMethod.GET)
-    public List<TimetableNode> findDiary(final Integer practiceId) {
+    @RequestMapping(value = "/findDiary/{id}", method = RequestMethod.GET)
+    public List<TimetableNode> findDiary(@PathVariable("id") final Integer practiceId) {
         return timeTableService.findDiary4Practice(practiceId);
     }
 
-    @RequestMapping(value = "saveDiary", method = RequestMethod.POST)
+    @RequestMapping(value = "/saveDiary", method = RequestMethod.POST)
     public ResponseEntity<List<TimetableNode>> saveDiary(@RequestBody final List<TimetableNode> diaryNodes) {
         return saveOrUpdateTimeTable(diaryNodes, TimeTableType.DIARY);
     }
 
-    @RequestMapping(value = "editDiary", method = RequestMethod.PUT)
+    @RequestMapping(value = "/editDiary", method = RequestMethod.PUT)
     public ResponseEntity<List<TimetableNode>> editDiary(@RequestBody final List<TimetableNode> scheduleNodes) {
         return saveOrUpdateTimeTable(scheduleNodes, TimeTableType.DIARY);
     }
 
-    @RequestMapping(value = "deleteDiary", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/deleteDiary", method = RequestMethod.DELETE)
     public void deleteDiary(final List<TimetableNode> diaryNodes) {
         timeTableService.deleteDiary(diaryNodes);
     }
@@ -74,10 +71,10 @@ public class TimeTableController {
     private ResponseEntity<List<TimetableNode>> saveOrUpdateTimeTable(
             final List<TimetableNode> nodes, final TimeTableType timeTableType) {
         try {
-            switch (timeTableType.name()) {
-                case "SCHEDULE":
+            switch (timeTableType) {
+                case SCHEDULE:
                     return new ResponseEntity<>(timeTableService.saveOrUpdateSchedule(nodes), HttpStatus.OK);
-                case "DIARY":
+                case DIARY:
                     return new ResponseEntity<>(timeTableService.saveOrUpdateDiary(nodes), HttpStatus.OK);
                 default:
                     return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

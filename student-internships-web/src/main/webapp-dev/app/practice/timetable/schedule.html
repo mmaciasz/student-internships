@@ -1,0 +1,42 @@
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Lp</th>
+        <th>Firma</th>
+        <th>Temat</th>
+        <th>Rok akademicki</th>
+        <th>Data rozpoczęcia</th>
+        <th>Data zakończenia</th>
+        <th>Status</th>
+        <th>Student</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody ng-if="scheduleCtrl.practices.length>0">
+    <tr ng-repeat="practice in scheduleCtrl.practices">
+        <td>{{$index + 1}}</td>
+        <td>{{practice.practiceDefinition.firm.name}}</td>
+        <td>{{practice.practiceDefinition.name}}</td>
+        <td>{{practice.academicYear}}</td>
+        <td>{{practice.startDt}}</td>
+        <td>{{practice.stopDt}}</td>
+        <td>{{dictionary.practiceStatus[practice.status].label}}</td>
+        <td>{{practice.student.firstName}} {{practice.student.lastName}}</td>
+
+        <td ng-if="loggedUser.isFirmEmployee()">
+            <a href="#/schedule/{{practice.practiceId}}">Edytuj harmonogram</a>
+        </td>
+
+        <td ng-if="loggedUser.isStudent()">
+            <a href="#/schedule/{{practice.practiceId}}">Podgląd harmonogramu</a>
+        </td>
+    </tr>
+    </tbody>
+    <tbody ng-if="scheduleCtrl.practices.length == 0">
+    <tr>
+        <td colspan="8">
+            Brak wyników
+        </td>
+    </tr>
+    </tbody>
+</table>

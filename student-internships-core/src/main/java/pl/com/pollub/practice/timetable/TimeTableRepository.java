@@ -2,6 +2,7 @@ package pl.com.pollub.practice.timetable;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import pl.com.pollub.db.entities.Practice;
 import pl.com.pollub.db.entities.TimetableNode;
 
 import java.util.List;
@@ -12,6 +13,6 @@ import java.util.List;
 @Repository
 public interface TimeTableRepository extends CrudRepository<TimetableNode, Integer> {
 
-    List<TimetableNode> findByPracticeIdAndType(final Integer practiceId, final String type);
+    List<TimetableNode> findByPracticeIdAndType(final Practice practiceId, final TimeTableType type);
 
 }

@@ -2,6 +2,7 @@ package pl.com.pollub.practice.timetable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.com.pollub.db.entities.Practice;
 import pl.com.pollub.db.entities.TimetableNode;
 
 import java.util.ArrayList;
@@ -21,11 +22,13 @@ public class TimeTableService {
     }
 
     public List<TimetableNode> findSchedule4Practice(final Integer practiceId) {
-        return timeTableRepository.findByPracticeIdAndType(practiceId, TimeTableType.SCHEDULE.name());
+        Practice practice = new Practice(practiceId);
+        return timeTableRepository.findByPracticeIdAndType(practice, TimeTableType.SCHEDULE);
     }
 
     public List<TimetableNode> findDiary4Practice(final Integer practiceId) {
-        return timeTableRepository.findByPracticeIdAndType(practiceId, TimeTableType.DIARY.name());
+        Practice practice = new Practice(practiceId);
+        return timeTableRepository.findByPracticeIdAndType(practice, TimeTableType.DIARY);
     }
 
     public List<TimetableNode> saveOrUpdateSchedule(final List<TimetableNode> scheduleNodes) {
