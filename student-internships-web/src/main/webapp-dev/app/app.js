@@ -4,12 +4,15 @@
     var app = angular
         .module('studentInternships', [
             'ngRoute',
+            'ngAnimate',
+            'mgcrea.ngStrap',
             'pascalprecht.translate',
             'ui.bootstrap',
             'auth',
             'student',
             'firm',
             'tutor',
+            'timeTable',
             'practiceDefinition',
             'practice'
         ]);

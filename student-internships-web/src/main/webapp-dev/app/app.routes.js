@@ -131,6 +131,24 @@
                     controllerAs: 'practiceCtrl'
                 });
 
+                $routeProvider.when('/diary/', {
+                    templateUrl: 'app/practice/timetable/diary.html',
+                    controller: 'DiaryController',
+                    controllerAs: 'diaryCtrl'
+                });
+
+                $routeProvider.when('/schedule/', {
+                    templateUrl: 'app/practice/timetable/schedule.html',
+                    controller: 'ScheduleController',
+                    controllerAs: 'scheduleCtrl'
+                });
+
+                $routeProvider.when('/schedule/:id', {
+                    templateUrl: 'app/practice/timetable/scheduleForm.html',
+                    controller: 'ScheduleDetailsController',
+                    controllerAs: 'scheduleDetCtrl'
+                });
+
                 $routeProvider.otherwise({
                     redirectTo: '/error'
                 });

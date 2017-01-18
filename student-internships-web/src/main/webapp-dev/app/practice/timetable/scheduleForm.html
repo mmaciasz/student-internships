@@ -1,0 +1,59 @@
+<div>
+    <button class="btn btn-primary pull-left" ng-click="scheduleDetCtrl.backToSchedule()">Powrót</button>
+    <button class="btn btn-primary pull-right" ng-click="scheduleDetCtrl.save()">{{'confirm' | translate}}</button>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Lp</th>
+            <th colspan="3">Data</th>
+            <th>Czas od</th>
+            <th>Czas do</th>
+            <th>Opis</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody ng-if="scheduleDetCtrl.timetableNodes.length>0">
+        <tr ng-repeat="node in scheduleDetCtrl.timetableNodes">
+            <td>{{$index + 1}}</td>
+            <td colspan="3">{{node.startDt | date:'yyyy-MM-dd'}}</td>
+            <td>
+                <div ng-hide="scheduleDetCtrl.editingData[$index]">{{node.startDt | date: 'HH:mm'}}</div>
+                <div ng-show="scheduleDetCtrl.editingData[$index]">
+                    <input type="text" ng-model="node.startDt"
+                           bs-timepicker data-time-format="HH:mm"
+                           data-length="1" data-minute-step="5" data-arrow-behavior="picker">
+                </div>
+            </td>
+            <td>
+                <div ng-hide="scheduleDetCtrl.editingData[$index]">{{node.stopDt | date: 'HH:mm'}}</div>
+                <div ng-show="scheduleDetCtrl.editingData[$index]">
+                    <input type="text" ng-model="node.stopDt"
+                           bs-timepicker data-time-format="HH:mm"
+                           data-length="1" data-minute-step="5" data-arrow-behavior="picker">
+                </div>
+            </td>
+            <td>
+                <div ng-hide="scheduleDetCtrl.editingData[$index]">{{node.description}}</div>
+                <div ng-show="scheduleDetCtrl.editingData[$index]">
+                    <textarea ng-model="node.description"></textarea>
+                </div>
+            </td>
+            <td>
+                <a href="" ng-hide="scheduleDetCtrl.editingData[$index]" ng-click="scheduleDetCtrl.modify($index)">Edytuj</a>
+                <a href="" ng-show="scheduleDetCtrl.editingData[$index]" ng-click="scheduleDetCtrl.update($index)">Zatwierdź</a>
+            </td>
+        </tr>
+        </tbody>
+        <tbody ng-if="scheduleDetCtrl.timetableNodes.length == 0">
+        <tr>
+            <td colspan="8">
+                Brak wyników
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <button class="btn btn-primary pull-left" ng-click="scheduleDetCtrl.backToSchedule()">Powrót</button>
+    <button class="btn btn-primary pull-right" ng-click="scheduleDetCtrl.save()">{{'confirm' | translate}}</button>
+</div>

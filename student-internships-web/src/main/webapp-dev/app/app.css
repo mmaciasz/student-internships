@@ -45,3 +45,14 @@
     text-align: center;
     font-size: 22px;
 }
+
+.timepicker.dropdown-menu {
+    padding: 0 4px;
+}
+.timepicker.dropdown-menu button {
+    outline: none;
+    border: 0px;
+}
+.timepicker.dropdown-menu tbody button {
+    padding: 6px;
+}

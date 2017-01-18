@@ -16,12 +16,12 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/firm")
-public class FirmContoller {
+public class FirmController {
 
     private final FirmService firmService;
 
     @Autowired
-    public FirmContoller(FirmService firmService) {
+    public FirmController(FirmService firmService) {
         this.firmService = firmService;
     }
 
@@ -98,7 +98,7 @@ public class FirmContoller {
             return new ResponseEntity<>(savedEmployee, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
