@@ -6,15 +6,19 @@
 
     app.controller('ScheduleController', ScheduleController);
 
-    ScheduleController.$inject = ['$http'];
+    ScheduleController.$inject = ['$http', '$rootScope'];
 
     /* @ngInject */
-    function ScheduleController($http) {
+    function ScheduleController($http, $rootScope) {
         var vm = this;
         vm.practices = [];
 
         $http.get('/practices/').then(function (response) {
-            vm.practices = response.data;
+            angular.forEach(response.data, function (value) {
+                if (value.status === $rootScope.dictionary.practiceStatus.APPROVED.code) {
+                    vm.practices.push(value);
+                }
+            })
         });
 
         ////////////////
@@ -29,16 +33,27 @@
     function ScheduleDetailsController($http, $routeParams, $location) {
         var vm = this;
         vm.timetableNodes = [];
+        vm.editingData = [];
         vm.save = save;
+        vm.modify = modify;
+        vm.update = update;
+        vm.backToSchedule=backToSchedule;
 
         $http.get('/timetable/findSchedule/' + $routeParams.id).then(function (response) {
-            vm.timetableNodes = response.data;
+            var i = 0;
+            angular.forEach(response.data, function (value) {
+                value.startDt = new Date(value.startDt);
+                value.stopDt = new Date(value.stopDt);
+                vm.timetableNodes.push(value);
+                vm.editingData[i] = false;
+                i++;
+            });
         });
 
         ////////////////
 
         function save() {
-            $http.post('/timetable/saveSchedule', vm.timetableNodes).then(onSuccess, onFailure);
+            $http.post('/timetable/saveTimetable', vm.timetableNodes).then(onSuccess, onFailure);
         }
 
         function onSuccess(response) {
@@ -46,7 +61,19 @@
         }
 
         function onFailure() {
-            alert("Nie udało się zapisać użytkownika. Sprawdź poprawność danych i spróbuj ponownie.");
+            alert("Nie udało się zapisać harmonogramu. Sprawdź poprawność danych i spróbuj ponownie.");
+        }
+
+        function modify(id) {
+            vm.editingData[id] = true;
+        }
+
+        function update(id) {
+            vm.editingData[id] = false;
+        }
+
+        function backToSchedule() {
+            $location.path("/schedule/");
         }
 
     }

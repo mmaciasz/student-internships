@@ -2,9 +2,12 @@ package pl.com.pollub.practice.timetable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import pl.com.pollub.db.entities.Practice;
 import pl.com.pollub.db.entities.TimetableNode;
+import pl.com.pollub.practice.PracticeRepository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,43 +18,45 @@ import java.util.List;
 public class TimeTableService {
 
     private final TimeTableRepository timeTableRepository;
+    private final PracticeRepository practiceRepository;
 
     @Autowired
-    public TimeTableService(TimeTableRepository timeTableRepository) {
+    public TimeTableService(TimeTableRepository timeTableRepository, PracticeRepository practiceRepository) {
         this.timeTableRepository = timeTableRepository;
+        this.practiceRepository = practiceRepository;
     }
 
     public List<TimetableNode> findSchedule4Practice(final Integer practiceId) {
-        Practice practice = new Practice(practiceId);
-        return timeTableRepository.findByPracticeIdAndType(practice, TimeTableType.SCHEDULE);
+        final Practice practice = practiceRepository.findOne(practiceId);
+        final List<TimetableNode> nodes = timeTableRepository.findByPracticeIdAndTypeOrderByTimetableNodeIdAsc(practice, TimeTableType.SCHEDULE);
+        if (CollectionUtils.isEmpty(nodes)) {
+            nodes.addAll(createNewTimetable(practice, practice.getStartDt(), practice.getStopDt(), TimeTableType.SCHEDULE));
+        }
+        return nodes;
     }
 
     public List<TimetableNode> findDiary4Practice(final Integer practiceId) {
-        Practice practice = new Practice(practiceId);
-        return timeTableRepository.findByPracticeIdAndType(practice, TimeTableType.DIARY);
+        final Practice practice = practiceRepository.findOne(practiceId);
+        final List<TimetableNode> nodes = timeTableRepository.findByPracticeIdAndTypeOrderByTimetableNodeIdAsc(practice, TimeTableType.DIARY);
+        if (CollectionUtils.isEmpty(nodes)) {
+            nodes.addAll(createNewTimetable(practice, practice.getStartDt(), practice.getStopDt(), TimeTableType.DIARY));
+        }
+        return nodes;
     }
 
-    public List<TimetableNode> saveOrUpdateSchedule(final List<TimetableNode> scheduleNodes) {
+    public List<TimetableNode> saveOrUpdateTimetable(final List<TimetableNode> nodes) {
         final List<TimetableNode> ret = new ArrayList<>();
-        scheduleNodes.forEach(node -> node.setType(TimeTableType.SCHEDULE));
-        timeTableRepository.save(scheduleNodes).forEach(ret::add);
+        nodes.forEach(node -> node.setType(TimeTableType.SCHEDULE));
+        timeTableRepository.save(nodes).forEach(ret::add);
         return ret;
     }
 
-    public void deleteSchedule(final List<TimetableNode> scheduleNodes) {
-        scheduleNodes.forEach(node -> node.setType(TimeTableType.SCHEDULE));
-        timeTableRepository.delete(scheduleNodes);
-    }
-
-    public List<TimetableNode> saveOrUpdateDiary(final List<TimetableNode> scheduleNodes) {
-        final List<TimetableNode> ret = new ArrayList<>();
-        scheduleNodes.forEach(node -> node.setType(TimeTableType.DIARY));
-        timeTableRepository.save(scheduleNodes).forEach(ret::add);
-        return ret;
-    }
-
-    public void deleteDiary(final List<TimetableNode> scheduleNodes) {
-        scheduleNodes.forEach(node -> node.setType(TimeTableType.DIARY));
-        timeTableRepository.delete(scheduleNodes);
+    private List<TimetableNode> createNewTimetable(Practice practice, LocalDate startDt, LocalDate stopDt, TimeTableType type) {
+        final List<TimetableNode> nodes = new ArrayList<>();
+        while (!startDt.isAfter(stopDt)) {
+            nodes.add(new TimetableNode(practice, type, startDt.atTime(8, 0), startDt.atTime(16, 0)));
+            startDt = startDt.plusDays(1L);
+        }
+        return nodes;
     }
 }

@@ -13,6 +13,6 @@ import java.util.List;
 @Repository
 public interface TimeTableRepository extends CrudRepository<TimetableNode, Integer> {
 
-    List<TimetableNode> findByPracticeIdAndType(final Practice practiceId, final TimeTableType type);
+    List<TimetableNode> findByPracticeIdAndTypeOrderByTimetableNodeIdAsc(final Practice practiceId, final TimeTableType type);
 
 }

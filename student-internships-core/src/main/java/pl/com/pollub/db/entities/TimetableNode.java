@@ -1,5 +1,11 @@
 package pl.com.pollub.db.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import org.springframework.core.serializer.DefaultSerializer;
 import pl.com.pollub.practice.timetable.TimeTableType;
 
 import javax.persistence.*;
@@ -23,14 +29,25 @@ public class TimetableNode {
     @Enumerated(EnumType.STRING)
     private TimeTableType type;
 
+    @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime startDt;
 
+    @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime stopDt;
 
     @Column(columnDefinition = "TEXT")
     private String description;
 
     public TimetableNode() {
+    }
+
+    public TimetableNode(final Practice practiceId, final TimeTableType type, final LocalDateTime startDt, final LocalDateTime stopDt) {
+        this.practiceId = practiceId;
+        this.type = type;
+        this.startDt = startDt;
+        this.stopDt = stopDt;
     }
 
     public Integer getTimetableNodeId() {
