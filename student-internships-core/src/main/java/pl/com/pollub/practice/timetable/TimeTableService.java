@@ -54,7 +54,7 @@ public class TimeTableService {
     private List<TimetableNode> createNewTimetable(Practice practice, LocalDate startDt, LocalDate stopDt, TimeTableType type) {
         final List<TimetableNode> nodes = new ArrayList<>();
         while (!startDt.isAfter(stopDt)) {
-            nodes.add(new TimetableNode(practice, type, startDt.atTime(8, 0), startDt.atTime(16, 0)));
+            nodes.add(new TimetableNode(practice, type, startDt.atTime(7, 0), startDt.atTime(15, 0)));
             startDt = startDt.plusDays(1L);
         }
         return nodes;

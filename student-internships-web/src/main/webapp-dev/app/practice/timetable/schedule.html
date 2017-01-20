@@ -27,7 +27,7 @@
             <a href="#/schedule/{{practice.practiceId}}">Edytuj harmonogram</a>
         </td>
 
-        <td ng-if="loggedUser.isStudent()">
+        <td ng-if="loggedUser.isStudent() || loggedUser.isAdmin()">
             <a href="#/schedule/{{practice.practiceId}}">Podgląd harmonogramu</a>
         </td>
     </tr>
