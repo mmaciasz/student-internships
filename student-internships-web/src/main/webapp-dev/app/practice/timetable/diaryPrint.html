@@ -1,0 +1,30 @@
+<div class="container">
+    <h2 class="text-center">Dziennik praktyk</h2>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Lp</th>
+            <th>Data</th>
+            <th class="width8">Czas od</th>
+            <th class="width8">Czas do</th>
+            <th>Opis</th>
+        </tr>
+        </thead>
+        <tbody ng-if="diaryPrintCtrl.timetableNodes.length>0">
+        <tr ng-repeat="node in diaryPrintCtrl.timetableNodes">
+            <td class="width3">{{$index + 1}}</td>
+            <td class="width10">{{node.startDt | date:'yyyy-MM-dd'}}</td>
+            <td class="text-center">{{node.startDt | date: 'HH:mm'}}</td>
+            <td class="text-center">{{node.stopDt | date: 'HH:mm'}}</td>
+            <td>{{node.description}}</td>
+        </tr>
+        </tbody>
+        <tbody ng-if="diaryPrintCtrl.timetableNodes.length == 0">
+        <tr>
+            <td colspan="8">
+                Brak wyników
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

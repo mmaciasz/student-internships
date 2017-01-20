@@ -143,6 +143,12 @@
                     controllerAs: 'diaryDetCtrl'
                 });
 
+                $routeProvider.when('/diaryprint/:id', {
+                    templateUrl: 'app/practice/timetable/diaryPrint.html',
+                    controller: 'DiaryPrintController',
+                    controllerAs: 'diaryPrintCtrl'
+                });
+
                 $routeProvider.when('/schedule/', {
                     templateUrl: 'app/practice/timetable/schedule.html',
                     controller: 'ScheduleController',
@@ -153,6 +159,12 @@
                     templateUrl: 'app/practice/timetable/scheduleForm.html',
                     controller: 'ScheduleDetailsController',
                     controllerAs: 'scheduleDetCtrl'
+                });
+
+                $routeProvider.when('/scheduleprint/:id', {
+                    templateUrl: 'app/practice/timetable/schedulePrint.html',
+                    controller: 'SchedulePrintController',
+                    controllerAs: 'schedulePrintCtrl'
                 });
 
                 $routeProvider.otherwise({

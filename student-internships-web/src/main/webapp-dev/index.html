@@ -23,10 +23,12 @@
                         System praktyk studenckich
                     </div>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#/">STRONA GŁÓWNA</a></li>
-                        <li ng-hide="isAuthorized()"><a href="#/contact">KONTAKT</a></li>
-                        <li ng-hide="isAuthorized()"><a href="#/">{{'login' | translate}}</a></li>
-                        <li ng-show="isAuthorized()"><a href="" ng-click="auth.logout()">{{'logout' | translate}} <span style="text-transform: none;">({{loggedUser.userName}})</span></a></li>
+                        <li ng-if="!isPrint()"><a href="#/">STRONA GŁÓWNA</a></li>
+                        <li ng-if="!isAuthorized() && !isPrint()"><a href="#/contact">KONTAKT</a></li>
+                        <li ng-if="isPrint()"><button class="btn btn-primary pull-right marginTop15" ng-click="print()">DRUKUJ</button></li>
+                        <li ng-if="isPrint()"><a href="#/"><button class="btn btn-primary pull-right">POWRÓT</button></a></li>
+                        <li ng-if="!isAuthorized() && !isPrint()"><a href="#/">{{'login' | translate}}</a></li>
+                        <li ng-if="isAuthorized() && !isPrint()"><a href="" ng-click="auth.logout()">{{'logout' | translate}} <span style="text-transform: none;">({{loggedUser.userName}})</span></a></li>
                     </ul>
                 </div>
             </nav>
@@ -35,12 +37,18 @@
 </header>
 
 
-<div ng-if="isAuthorized()" class="container">
+<div ng-if="isAuthorized() && !isPrint()" class="container">
     <div class="row">
         <div class="col-md-2">
             <ng-include src="'app/menu.html'"/>
         </div>
         <div ng-view class="col-md-10" style="margin-top: 20px;"></div>
+    </div>
+</div>
+
+<div ng-if="isPrint()" class="container">
+    <div class="row">
+        <div ng-view class="col-md-12" style="margin-top: 20px;"></div>
     </div>
 </div>
 

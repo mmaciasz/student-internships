@@ -5,10 +5,10 @@
         .module('auth')
         .controller('AuthController', AuthController);
 
-    AuthController.$inject = ['$rootScope', '$http', '$location'];
+    AuthController.$inject = ['$rootScope', '$http', '$location', '$timeout'];
 
     /* @ngInject */
-    function AuthController($rootScope, $http, $location) {
+    function AuthController($rootScope, $http, $location, $timeout) {
         var vm = this;
         vm.credentials = {};
 
@@ -20,12 +20,20 @@
         ////////////////
 
         // nie wiem gdzie to wrzucic, moze jest na to lepsze miejsce...
-        $rootScope.isAuthorized = function() {
+        $rootScope.isAuthorized = function () {
             return $rootScope.loggedUser !== undefined && $rootScope.loggedUser !== null;
         };
 
-        function authenticate(credentials, callback) {
+        $rootScope.isPrint = function () {
+            return $rootScope.isPrintVar;
+        };
 
+        $rootScope.print = function () {
+            window.print();
+        };
+
+        function authenticate(credentials, callback) {
+            $rootScope.isPrintVar = false;
             var headers = credentials ? {authorization: "Basic " + btoa(credentials.username + ":" + credentials.password)} : {};
 
             $http.get('user', {headers: headers}).then(function (response) {
@@ -49,7 +57,7 @@
         }
 
         function logout() {
-            $http.post('logout', {}).finally(function() {
+            $http.post('logout', {}).finally(function () {
                 delete $rootScope.loggedUser;
                 $location.path("/");
             });

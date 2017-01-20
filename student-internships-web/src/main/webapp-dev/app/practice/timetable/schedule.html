@@ -25,10 +25,14 @@
 
         <td ng-if="loggedUser.isFirmEmployee()">
             <a href="#/schedule/{{practice.practiceId}}">Edytuj harmonogram</a>
+            |
+            <a href="#/scheduleprint/{{practice.practiceId}}">Drukuj harmonogram</a>
         </td>
 
         <td ng-if="loggedUser.isStudent() || loggedUser.isAdmin()">
             <a href="#/schedule/{{practice.practiceId}}">Podgląd harmonogramu</a>
+            |
+            <a href="#/scheduleprint/{{practice.practiceId}}">Drukuj harmonogram</a>
         </td>
     </tr>
     </tbody>

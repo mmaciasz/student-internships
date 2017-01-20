@@ -152,6 +152,36 @@
 
     }
 
+    app.controller('DiaryPrintController', DiaryPrintController);
+
+    DiaryPrintController.$inject = ['$rootScope', '$http', '$routeParams'];
+
+    /* @ngInject */
+    function DiaryPrintController($rootScope, $http, $routeParams) {
+        var vm = this;
+        vm.timetableNodes = [];
+
+        $http.get('/timetable/findDiary/' + $routeParams.id).then(function (response) {
+            $rootScope.isPrintVar = true;
+            vm.timetableNodes = response.data;
+        });
+    }
+
+    app.controller('SchedulePrintController', SchedulePrintController);
+
+    SchedulePrintController.$inject = ['$rootScope', '$http', '$routeParams', '$window', '$timeout'];
+
+    /* @ngInject */
+    function SchedulePrintController($rootScope, $http, $routeParams, $window, $timeout) {
+        var vm = this;
+        vm.timetableNodes = [];
+
+        $http.get('/timetable/findSchedule/' + $routeParams.id).then(function (response) {
+            $rootScope.isPrintVar = true;
+            vm.timetableNodes = response.data;
+        });
+
+    }
 
 })();
 

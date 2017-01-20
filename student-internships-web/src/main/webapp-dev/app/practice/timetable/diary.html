@@ -23,10 +23,14 @@
 
         <td ng-if="loggedUser.isStudent()">
             <a href="#/diary/{{practice.practiceId}}">Edytuj dziennik</a>
+            |
+            <a href="#/diaryprint/{{practice.practiceId}}">Drukuj dziennik</a>
         </td>
 
         <td ng-if="loggedUser.isFirmEmployee() || loggedUser.isAdmin()">
             <a href="#/diary/{{practice.practiceId}}">Podgląd dziennika</a>
+            |
+            <a href="#/diaryprint/{{practice.practiceId}}">Drukuj dziennik</a>
         </td>
     </tr>
     </tbody>
