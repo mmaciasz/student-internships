@@ -30,8 +30,8 @@
     color: #edac46;
 }
 
-.width95 {
-    width: 95%;
+.width3 {
+    width: 3%;
 }
 
 .width8 {
@@ -40,6 +40,10 @@
 
 .width10 {
     width: 10%;
+}
+
+.width95 {
+    width: 95%;
 }
 
 .loginForm {

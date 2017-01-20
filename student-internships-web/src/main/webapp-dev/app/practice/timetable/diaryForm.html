@@ -1,0 +1,59 @@
+<div>
+    <button ng-show="loggedUser.isStudent()" class="btn btn-primary pull-left" ng-click="diaryDetCtrl.backToDiary()">Powrót</button>
+    <button ng-show="loggedUser.isStudent()" class="btn btn-primary pull-right" ng-click="diaryDetCtrl.save()">{{'confirm' | translate}}</button>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Lp</th>
+            <th>Data</th>
+            <th class="width8">Czas od</th>
+            <th class="width8">Czas do</th>
+            <th>Opis</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody ng-if="diaryDetCtrl.timetableNodes.length>0">
+        <tr ng-repeat="node in diaryDetCtrl.timetableNodes">
+            <td class="width3">{{$index + 1}}</td>
+            <td class="width10">{{node.startDt | date:'yyyy-MM-dd'}}</td>
+            <td>
+                <div class="text-center" ng-hide="diaryDetCtrl.editingData[$index]">{{node.startDt | date: 'HH:mm'}}</div>
+                <div ng-show="diaryDetCtrl.editingData[$index]">
+                    <input class="radius5 timepicker-input" type="text" ng-model="node.startDt"
+                           bs-timepicker data-time-format="HH:mm"
+                           data-length="1" data-minute-step="5" data-arrow-behavior="picker">
+                </div>
+            </td>
+            <td>
+                <div class="text-center" ng-hide="diaryDetCtrl.editingData[$index]">{{node.stopDt | date: 'HH:mm'}}</div>
+                <div ng-show="diaryDetCtrl.editingData[$index]">
+                    <input class="radius5 timepicker-input" type="text" ng-model="node.stopDt"
+                           bs-timepicker data-time-format="HH:mm"
+                           data-length="1" data-minute-step="5" data-arrow-behavior="picker">
+                </div>
+            </td>
+            <td>
+                <div ng-hide="diaryDetCtrl.editingData[$index]">{{node.description}}</div>
+                <div ng-show="diaryDetCtrl.editingData[$index]">
+                    <textarea class="textarea radius5" ng-model="node.description"></textarea>
+                </div>
+            </td>
+            <td class="width8 text-center" ng-show="loggedUser.isStudent()">
+                <a href="" ng-hide="diaryDetCtrl.editingData[$index]" ng-click="diaryDetCtrl.modify($index)">Edytuj</a>
+                <a href="" ng-show="diaryDetCtrl.editingData[$index]" ng-click="diaryDetCtrl.update($index)">Zatwierdź</a>
+            </td>
+        </tr>
+        </tbody>
+        <tbody ng-if="diaryDetCtrl.timetableNodes.length == 0">
+        <tr>
+            <td colspan="8">
+                Brak wyników
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <button ng-show="loggedUser.isStudent()" class="btn btn-primary pull-left" ng-click="diaryDetCtrl.backToSchedule()">Powrót</button>
+    <button ng-show="loggedUser.isStudent()" class="btn btn-primary pull-right" ng-click="diaryDetCtrl.save()">{{'confirm' | translate}}</button>
+</div>

@@ -1,6 +1,6 @@
 <div>
-    <button class="btn btn-primary pull-left" ng-click="scheduleDetCtrl.backToSchedule()">Powrót</button>
-    <button class="btn btn-primary pull-right" ng-click="scheduleDetCtrl.save()">{{'confirm' | translate}}</button>
+    <button ng-show="loggedUser.isFirmEmployee()" class="btn btn-primary pull-left" ng-click="scheduleDetCtrl.backToSchedule()">Powrót</button>
+    <button ng-show="loggedUser.isFirmEmployee()" class="btn btn-primary pull-right" ng-click="scheduleDetCtrl.save()">{{'confirm' | translate}}</button>
 
     <table class="table table-hover">
         <thead>
@@ -15,7 +15,7 @@
         </thead>
         <tbody ng-if="scheduleDetCtrl.timetableNodes.length>0">
         <tr ng-repeat="node in scheduleDetCtrl.timetableNodes">
-            <td>{{$index + 1}}</td>
+            <td class="width3">{{$index + 1}}</td>
             <td class="width10">{{node.startDt | date:'yyyy-MM-dd'}}</td>
             <td>
                 <div class="text-center" ng-hide="scheduleDetCtrl.editingData[$index]">{{node.startDt | date: 'HH:mm'}}</div>
@@ -54,6 +54,6 @@
         </tbody>
     </table>
 
-    <button class="btn btn-primary pull-left" ng-click="scheduleDetCtrl.backToSchedule()">Powrót</button>
-    <button class="btn btn-primary pull-right" ng-click="scheduleDetCtrl.save()">{{'confirm' | translate}}</button>
+    <button ng-show="loggedUser.isFirmEmployee()" class="btn btn-primary pull-left" ng-click="scheduleDetCtrl.backToSchedule()">Powrót</button>
+    <button ng-show="loggedUser.isFirmEmployee()" class="btn btn-primary pull-right" ng-click="scheduleDetCtrl.save()">{{'confirm' | translate}}</button>
 </div>

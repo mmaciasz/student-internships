@@ -137,6 +137,12 @@
                     controllerAs: 'diaryCtrl'
                 });
 
+                $routeProvider.when('/diary/:id', {
+                    templateUrl: 'app/practice/timetable/diaryForm.html',
+                    controller: 'DiaryDetailsController',
+                    controllerAs: 'diaryDetCtrl'
+                });
+
                 $routeProvider.when('/schedule/', {
                     templateUrl: 'app/practice/timetable/schedule.html',
                     controller: 'ScheduleController',

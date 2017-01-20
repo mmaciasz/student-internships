@@ -1,0 +1,40 @@
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Lp</th>
+        <th>Firma</th>
+        <th>Temat</th>
+        <th>Rok akademicki</th>
+        <th>Data rozpoczęcia</th>
+        <th>Data zakończenia</th>
+        <th ng-if="loggedUser.isFirmEmployee() || loggedUser.isAdmin()">Student</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody ng-if="diaryCtrl.practices.length>0">
+    <tr ng-repeat="practice in diaryCtrl.practices">
+        <td>{{$index + 1}}</td>
+        <td>{{practice.practiceDefinition.firm.name}}</td>
+        <td>{{practice.practiceDefinition.name}}</td>
+        <td>{{practice.academicYear}}</td>
+        <td>{{practice.startDt}}</td>
+        <td>{{practice.stopDt}}</td>
+        <td ng-if="loggedUser.isFirmEmployee() || loggedUser.isAdmin()">{{practice.student.firstName}} {{practice.student.lastName}}</td>
+
+        <td ng-if="loggedUser.isStudent()">
+            <a href="#/diary/{{practice.practiceId}}">Edytuj dziennik</a>
+        </td>
+
+        <td ng-if="loggedUser.isFirmEmployee() || loggedUser.isAdmin()">
+            <a href="#/diary/{{practice.practiceId}}">Podgląd dziennika</a>
+        </td>
+    </tr>
+    </tbody>
+    <tbody ng-if="diaryCtrl.practices.length == 0">
+    <tr>
+        <td colspan="8">
+            Brak wyników
+        </td>
+    </tr>
+    </tbody>
+</table>
