@@ -163,7 +163,11 @@
 
         $http.get('/timetable/findDiary/' + $routeParams.id).then(function (response) {
             $rootScope.isPrintVar = true;
-            vm.timetableNodes = response.data;
+            angular.forEach(response.data, function (value) {
+                value.startDt = new Date(value.startDt);
+                value.stopDt = new Date(value.stopDt);
+                vm.timetableNodes.push(value);
+            });
         });
     }
 
@@ -172,13 +176,17 @@
     SchedulePrintController.$inject = ['$rootScope', '$http', '$routeParams', '$window', '$timeout'];
 
     /* @ngInject */
-    function SchedulePrintController($rootScope, $http, $routeParams, $window, $timeout) {
+    function SchedulePrintController($rootScope, $http, $routeParams) {
         var vm = this;
         vm.timetableNodes = [];
 
         $http.get('/timetable/findSchedule/' + $routeParams.id).then(function (response) {
             $rootScope.isPrintVar = true;
-            vm.timetableNodes = response.data;
+            angular.forEach(response.data, function (value) {
+                value.startDt = new Date(value.startDt);
+                value.stopDt = new Date(value.stopDt);
+                vm.timetableNodes.push(value);
+            });
         });
 
     }
