@@ -46,7 +46,6 @@ public class TimeTableService {
 
     public List<TimetableNode> saveOrUpdateTimetable(final List<TimetableNode> nodes) {
         final List<TimetableNode> ret = new ArrayList<>();
-        nodes.forEach(node -> node.setType(TimeTableType.SCHEDULE));
         timeTableRepository.save(nodes).forEach(ret::add);
         return ret;
     }
