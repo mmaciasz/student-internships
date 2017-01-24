@@ -21,7 +21,7 @@ public class Practice {
     @JoinColumn(name = "practiceDefinitionId", nullable = false)
     private PracticeDefinition practiceDefinition;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "firmEmployeeId")
     private User firmEmployee;
 
@@ -29,7 +29,7 @@ public class Practice {
     @JoinColumn(name = "studentId", nullable = false)
     private User student;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "promoterId")
     private User promoter;
 
@@ -44,7 +44,12 @@ public class Practice {
     @Column(nullable = false)
     private LocalDate stopDt;
 
+    private Integer hours;
+
     private BigDecimal note;
+
+    @Column(length = 400)
+    private String comment;
 
     @Column(nullable = false, length = 20)
     @Enumerated(EnumType.STRING)
@@ -143,5 +148,25 @@ public class Practice {
 
     public boolean isApproved() {
         return PracticeStatus.APPROVED.equals(status);
+    }
+
+    public boolean isCompleted() {
+        return PracticeStatus.COMPLETED.equals(status);
+    }
+
+    public Integer getHours() {
+        return hours;
+    }
+
+    public void setHours(Integer hours) {
+        this.hours = hours;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

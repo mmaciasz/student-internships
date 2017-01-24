@@ -131,6 +131,12 @@
                     controllerAs: 'practiceCtrl'
                 });
 
+                $routeProvider.when('/internships/:id/certificate', {
+                    templateUrl: 'app/practice/practiceCertificate.html',
+                    controller: 'PracticeDetailsController',
+                    controllerAs: 'practiceCtrl'
+                });
+
                 $routeProvider.when('/diary/', {
                     templateUrl: 'app/practice/timetable/diary.html',
                     controller: 'DiaryController',

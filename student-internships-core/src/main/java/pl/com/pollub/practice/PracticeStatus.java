@@ -5,14 +5,6 @@ package pl.com.pollub.practice;
  */
 public enum PracticeStatus {
 
-    /** Rozpoczęta */
-    ACTIVE,
-
-    /** Zakończona */
-    ENDED,
-
-    /** Usunięta */
-    DELETED,
     /** Waiting for approval by firm eployee */
     WAITING_FOR_APPROVAL,
 

@@ -37,7 +37,7 @@
             var headers = credentials ? {authorization: "Basic " + btoa(credentials.username + ":" + credentials.password)} : {};
 
             $http.get('user', {headers: headers}).then(function (response) {
-                $rootScope.loggedUser = new LoggedUser(response.data.name, response.data.authorities[0].authority);
+                $rootScope.loggedUser = new LoggedUser(response.data.principal.user, response.data.authorities[0].authority);
                 callback && callback();
             }, function () {
                 callback && callback();

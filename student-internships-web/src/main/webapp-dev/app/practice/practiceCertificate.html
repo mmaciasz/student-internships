@@ -1,0 +1,63 @@
+<div>
+<style>
+
+        #practice-certificate .firm-data span {
+            font-size: x-small;
+        }
+
+        #practice-certificate .content {
+            margin-top: 40px;
+        }
+
+        #practice-certificate .content span {
+            font-weight: bold;
+        }
+
+    </style>
+
+    <div id="practice-certificate">
+        <div class="firm-data">
+            <p>
+                {{practice.practiceDefinition.firm.name}}<br>
+                <span>Nazwa zakładu pracy</span>
+            </p>
+
+            <p>
+                {{practice.practiceDefinition.firm.address}}<br>
+                <span>Adres zakładu pracy</span>
+            </p>
+            {{practice.firmEmployee.fullName}}<br>
+            <span>Imię i nazwisko Zakładowego Opiekuna Praktyk</span>
+            </p>
+        </div>
+
+        <div class="content">
+            <h2 style="text-align: center">ZAŚWIADCZENIE</h2>
+
+            <p>
+                Zaświadcza się, że Pan/i <span>{{practice.student.fullName}}</span> (pesel: <span>{{practice.student.nationalNo}}</span>),
+                student/-ka Politechniki Lubelskiej odbył/a w naszym zakładzie pracy
+                studencką praktykę w okresie od <span>{{practice.startDt}}</span> do <span>{{practice.stopDt}}</span>
+                w wymiarze <span>{{practice.hours}}</span> godzin.
+            </p>
+
+            <p>Opinia o praktykancie:</p>
+
+            <p>
+                {{practice.comment}}
+            </p>
+
+            <p>Ocena: <span>{{practice.note}}</span></p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <p style="text-align: right">
+                ...........................................................................<br>
+                Pieczęć i podpis przedstawiciela zakładu pracy
+            </p>
+        </div>
+    </div>
+</div>

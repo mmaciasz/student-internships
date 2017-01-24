@@ -1,6 +1,6 @@
 
-var LoggedUser = function(userName, userType) {
-    this.userName = userName;
+var LoggedUser = function(user, userType) {
+    this.user = user;
     this.userType = userType;
 }
 
@@ -14,4 +14,8 @@ LoggedUser.prototype.isFirmEmployee = function() {
 
 LoggedUser.prototype.isStudent = function() {
     return "STUDENT" === this.userType;
+}
+
+LoggedUser.prototype.getUser = function() {
+    return this.user;
 }

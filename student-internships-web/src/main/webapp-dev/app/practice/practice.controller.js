@@ -6,17 +6,18 @@
 
     app.controller('PracticeListController', PracticeListController);
 
-    PracticeListController.$inject = ['$http', '$route', '$rootScope', '$location'];
+    PracticeListController.$inject = ['$http', '$route', '$rootScope', '$location', '$compile', '$scope', '$timeout'];
 
     /* @ngInject */
-    function PracticeListController($http, $route, $rootScope, $location) {
+    function PracticeListController($http, $route, $rootScope, $location, $compile, $scope, $timeout) {
         var vm = this;
         vm.practices = [];
         vm.remove = remove;
         vm.markAsAccepted = markAsAccepted;
         vm.markAsRejected = markAsRejected;
-        vm.markAsCompleted = markAsCompleted;
         vm.markAsCancelled = markAsCancelled;
+
+        vm.printCertificate = printCertificate;
 
         $http.get('/practices/').then(function (response) {
             vm.practices = response.data;
@@ -32,16 +33,12 @@
 
         function markAsAccepted(practice) {
             practice.status = $rootScope.dictionary.practiceStatus.APPROVED.code;
+            practice.firmEmployee = $rootScope.loggedUser.getUser();
             updatePracticeStatus(practice);
         }
 
         function markAsRejected(practice) {
             practice.status = $rootScope.dictionary.practiceStatus.REJECTED.code;
-            updatePracticeStatus(practice);
-        }
-
-        function markAsCompleted(practice) {
-            practice.status = $rootScope.dictionary.practiceStatus.COMPLETED.code;
             updatePracticeStatus(practice);
         }
 
@@ -57,16 +54,38 @@
         function onSuccess(response) {
             $location.path("/internships");
         }
+
+        function printCertificate(practiceId) {
+
+            $http.get('/app/practice/practiceCertificate.html').then(function (response) {
+                var template = response.data;
+
+                $http.get('/practices/' + practiceId).then(function (response) {
+                    $scope.practice = response.data;
+                    var content = $compile(template)($scope);
+                    $timeout(function(){
+                        console.log(content.html());
+                        var popupWin = window.open('', '_blank', 'width=640,height=480');
+                        popupWin.document.open();
+                        popupWin.document.write('<html><head></head><body onload="window.print()">' + content.html() + '</body></html>');
+                        popupWin.document.close();
+                    });
+                });
+
+
+            });
+        }
     }
 
     app.controller('PracticeDetailsController', PracticeDetailsController);
 
-    PracticeDetailsController.$inject = ['$http', '$routeParams', '$location'];
+    PracticeDetailsController.$inject = ['$http', '$routeParams', '$location', '$rootScope'];
 
     /* @ngInject */
-    function PracticeDetailsController($http, $routeParams, $location) {
+    function PracticeDetailsController($http, $routeParams, $location, $rootScope) {
         var vm = this;
         vm.save = save;
+        vm.saveAsCompleted = saveAsCompleted;
         vm.isCreation = isCreation;
         vm.promoters = [];
         vm.practice = {};
@@ -104,8 +123,19 @@
             if(isCreation()) {
                 $http.post('/practices/', vm.practice).then(onSuccess, onFailure);
             } else {
-                $http.put('/practices/', practice).then(onSuccess, onFailure);
+                $http.put('/practices/', vm.practice).then(onSuccess, onFailure);
             }
+        }
+
+        function saveAsCompleted() {
+            vm.practice.status = $rootScope.dictionary.practiceStatus.COMPLETED.code;
+
+            if(vm.practice.note && vm.practice.comment) {
+                save();
+            } else {
+                alert("Zapis praktyki nie powiódł się. Sprawdź poprawność danych i spróbuj ponownie.");
+            }
+
         }
 
         function validate(practice) {

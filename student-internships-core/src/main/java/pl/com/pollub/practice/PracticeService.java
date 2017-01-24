@@ -5,14 +5,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pl.com.pollub.db.entities.Practice;
 import pl.com.pollub.db.entities.PracticeDefinition;
+import pl.com.pollub.exception.ValidationException;
 import pl.com.pollub.practice.definition.PracticeDefSearchCriteria;
 import pl.com.pollub.practice.definition.PracticeDefinitionRepository;
 import pl.com.pollub.util.AcademicYearResolver;
 
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.Year;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Maciek on 2016-12-08.
@@ -45,6 +44,11 @@ public class PracticeService {
         return practiceDefRepository.findOne(id);
     }
 
+    public Practice findPracticeById(Integer id) {
+
+        return practiceRepository.findOne(id);
+    }
+
     public void removePracticeDefinition(Integer id) {
         practiceDefRepository.delete(id);
     }
@@ -55,10 +59,27 @@ public class PracticeService {
 
     public Practice saveOrUpdatePractice(Practice practice) {
 
+        if(!validatePractice(practice)) {
+            throw new ValidationException();
+        }
+
         String academicYear = AcademicYearResolver.computeAcademicYear(practice.getStartDt());
         practice.setAcademicYear(academicYear);
 
         return practiceRepository.save(practice);
+    }
+
+    private boolean validatePractice(Practice practice) {
+
+        if(Objects.isNull(practice.getStartDt()) || Objects.isNull(practice.getStopDt())) {
+            return false;
+        }
+
+        if(practice.getStartDt().isAfter(practice.getStopDt())) {
+            return false;
+        }
+
+        return true;
     }
 
 }

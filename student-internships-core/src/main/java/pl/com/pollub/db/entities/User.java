@@ -50,6 +50,9 @@ public class User {
     @Column(nullable = false)
     private Boolean active;
 
+    @Column(length = 9)
+    private String academicYears;
+
     @Transient
     private String newPassword;
 
@@ -105,6 +108,11 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getFullName() {
+
+        return firstName + " " + lastName;
     }
 
     public String getEmail() {
@@ -169,5 +177,13 @@ public class User {
 
     public void setConfirmedNewPassword(String confirmedNewPassword) {
         this.confirmedNewPassword = confirmedNewPassword;
+    }
+
+    public String getAcademicYears() {
+        return academicYears;
+    }
+
+    public void setAcademicYears(String academicYears) {
+        this.academicYears = academicYears;
     }
 }

@@ -3,17 +3,11 @@ package pl.com.pollub.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.com.pollub.db.entities.Firm;
 import pl.com.pollub.db.entities.Practice;
-import pl.com.pollub.db.entities.PracticeDefinition;
 import pl.com.pollub.db.entities.User;
 import pl.com.pollub.practice.PracticeSearchCriteria;
-import pl.com.pollub.practice.definition.PracticeDefSearchCriteria;
-import pl.com.pollub.practice.definition.PracticeDefinitionStatus;
 import pl.com.pollub.practice.PracticeService;
 import pl.com.pollub.practice.PracticeStatus;
 import pl.com.pollub.util.ApplicationUtils;
@@ -50,6 +44,11 @@ public class PracticeController {
 
         List<Practice> practices = practiceService.searchPractices(criteria);
         return practices;
+    }
+
+    @RequestMapping(value = "/{id}")
+    public Practice findById(@PathVariable("id") int id) {
+        return practiceService.findPracticeById(id);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)

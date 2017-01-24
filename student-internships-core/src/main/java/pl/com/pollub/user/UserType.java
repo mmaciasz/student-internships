@@ -1,8 +1,6 @@
 package pl.com.pollub.user;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by Maciek on 2016-10-23.

@@ -1,11 +1,9 @@
 package pl.com.pollub.db.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
-import org.springframework.core.serializer.DefaultSerializer;
 import pl.com.pollub.practice.timetable.TimeTableType;
 
 import javax.persistence.*;

@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import pl.com.pollub.db.entities.Firm;
 import pl.com.pollub.db.entities.PracticeDefinition;
 import pl.com.pollub.db.entities.User;
+import pl.com.pollub.practice.PracticeService;
 import pl.com.pollub.practice.definition.PracticeDefSearchCriteria;
 import pl.com.pollub.practice.definition.PracticeDefinitionStatus;
-import pl.com.pollub.practice.PracticeService;
 import pl.com.pollub.util.ApplicationUtils;
 
 import java.util.List;

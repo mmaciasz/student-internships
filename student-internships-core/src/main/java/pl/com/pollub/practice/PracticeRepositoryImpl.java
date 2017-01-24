@@ -4,9 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Repository;
 import pl.com.pollub.db.entities.Practice;
-import pl.com.pollub.db.entities.PracticeDefinition;
-import pl.com.pollub.practice.definition.PracticeDefSearchCriteria;
-import pl.com.pollub.practice.definition.PracticeDefinitionRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;

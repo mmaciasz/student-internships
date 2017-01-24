@@ -1,4 +1,4 @@
-<div>
+<div ng-if="!loggedUser.isFirmEmployee()">
     <form role="form" class="form-horizontal" ng-submit="practiceCtrl.save()">
         <div class="form-group">
             <label for="practiceDefName" class="col-sm-2 control-label">
@@ -15,14 +15,23 @@
                 <span class="required">*</span>
             </label>
             <div class="col-sm-4">
-                <datepicker dpid="startDt" ng-model="practiceCtrl.practice.startDt" dpplaceholder="Data rozpoczęcia" />
+                <datepicker ng-model="practiceCtrl.practice.startDt" dpplaceholder="Data rozpoczęcia" />
             </div>
             <label for="stopDt" class="col-sm-2 control-label">
                 Data zakończenia
                 <span class="required">*</span>
             </label>
             <div class="col-sm-4">
-                <datepicker dpid="stopDt" dpplaceholder="Data zakończenia" ng-model="practiceCtrl.practice.stopDt" />
+                <datepicker dpplaceholder="Data zakończenia" ng-model="practiceCtrl.practice.stopDt" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="hours" class="col-sm-2 control-label">
+                Liczba godzin
+                <span class="required">*</span>
+            </label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="hours" ng-model="practiceCtrl.practice.hours" placeholder="Liczba godzin"/>
             </div>
         </div>
         <div class="form-group">
@@ -31,7 +40,7 @@
             </label>
             <div class="col-sm-4">
                 <p class="input-group">
-                    <input type="checkbox" id="linkedWithPromoter" class="form-control" ng-model="practiceDefCtrl.linkedWithPromoter" style="width: 14px;" />
+                    <input type="checkbox" id="linkedWithPromoter" class="form-control" ng-model="practiceCtrl.linkedWithPromoter" style="width: 14px;" />
                 </p>
             </div>
             <label for="promoter" class="col-sm-2 control-label">
@@ -43,10 +52,81 @@
                             class="form-control"
                             id="promoter"
                             placeholder="Promotor"
-                            ng-model="practiceDefCtrl.promoterId"
-                            ng-options='promoter.userId as (promoter.firstName + " " + promoter.lastName) for promoter in promoters'
+                            ng-model="practiceCtrl.promoterId"
+                            ng-options='promoter.userId as (promoter.firstName + " " + promoter.lastName) for promoter in practiceCtrl.promoters'
                             ></select>
                 </p>
+            </div>
+        </div>
+
+        <button class="btn btn-primary pull-left" onclick="window.location.href='#/internships/subjects'">Powrót</button><!-- TODO -->
+        <button type="submit" class="btn btn-primary pull-right">{{'confirm' | translate}}</button>
+    </form>
+</div>
+
+<div ng-if="loggedUser.isFirmEmployee()">
+    <form role="form" class="form-horizontal" ng-submit="practiceCtrl.saveAsCompleted()">
+        <div class="form-group">
+            <label for="practiceDefName" class="col-sm-2 control-label">
+                Temat praktyki
+            </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="practiceDefName" ng-model="practiceCtrl.practice.practiceDefinition.name" disabled/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="student" class="col-sm-2 control-label">
+                Praktykant
+            </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="student" ng-model="practiceCtrl.practice.student.fullName" disabled/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="startDt" class="col-sm-2 control-label">
+                Data rozpoczęcia
+            </label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="startDt" ng-model="practiceCtrl.practice.startDt" disabled/>
+            </div>
+            <label for="stopDt" class="col-sm-2 control-label">
+                Data zakończenia
+            </label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="stopDt" ng-model="practiceCtrl.practice.stopDt" disabled/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="hours" class="col-sm-2 control-label">
+                Liczba godzin
+            </label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="hours" ng-model="practiceCtrl.practice.hours" placeholder="Liczba godzin" disabled/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="comment" class="col-sm-2 control-label">
+                Opinia opiekuna
+                <span class="required">*</span>
+            </label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="comment" ng-model="practiceCtrl.practice.comment" placeholder="Opinia opiekuna" required></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="note" class="col-sm-2 control-label">
+                Ocena
+                <span class="required">*</span>
+            </label>
+            <div class="col-sm-2">
+                <select class="form-control" id="note" ng-model="practiceCtrl.practice.note" placeholder="Ocena" required>
+                    <option value="5.0">5.0</option>
+                    <option value="4.5">4.5</option>
+                    <option value="4.0">4.0</option>
+                    <option value="3.5">3.5</option>
+                    <option value="3.0">3.0</option>
+                    <option value="2.0">2.0</option>
+                </select>
             </div>
         </div>
 

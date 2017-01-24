@@ -3,7 +3,8 @@
     <thead>
         <tr>
             <th>Lp</th>
-            <th>Firma</th>
+            <th ng-if="!loggedUser.isFirmEmployee()">Firma</th>
+            <th ng-if="!loggedUser.isStudent()">Praktykant</th>
             <th>Temat</th>
             <th>Rok akademicki</th>
             <th>Data rozpoczęcia</th>
@@ -15,7 +16,8 @@
     <tbody ng-if="practiceCtrl.practices.length>0">
         <tr ng-repeat="practice in practiceCtrl.practices">
             <td>{{$index + 1}}</td>
-            <td>{{practice.practiceDefinition.firm.name}}</td>
+            <td ng-if="!loggedUser.isFirmEmployee()">{{practice.practiceDefinition.firm.name}}</td>
+            <td ng-if="!loggedUser.isStudent()">{{practice.student.fullName}}</td>
             <td>{{practice.practiceDefinition.name}}</td>
             <td>{{practice.academicYear}}</td>
             <td>{{practice.startDt}}</td>
@@ -30,22 +32,25 @@
                     |
                 </span>
                 <span ng-if="practice.approved">
-                    <a href="" ng-click="practiceCtrl.markAsCompleted(practice)">Oznacz jako zakończone</a>
+                    <a href="#/internships/{{practice.practiceId}}">Oznacz jako zakończone</a>
                     |
                     <a href="" ng-click="practiceCtrl.markAsCancelled(practice)">Anuluj</a>
+                    |
+                </span>
+                <span ng-if="practice.completed">
+                    <a href="" ng-click="practiceCtrl.printCertificate(practice.practiceId)">Wydrukuj zaświadczenie</a>
                     |
                 </span>
                 <a href="mailto:{{practice.student.email}}">Kontakt z praktykantem</a>
             </td>
 
             <td ng-if="loggedUser.isStudent()">
-                <a ng-if="practice.waitingForApproval || practice.approved" href="" ng-click="practiceCtrl.markAsCancelled(practice)">Anuluj</a>
-                |
+                <a ng-if="practice.waitingForApproval || practice.approved" href="" ng-click="practiceCtrl.markAsCancelled(practice)">Anuluj |</a>
                 <a href="mailto:{{practice.firmEmployee.email}}">Kontakt z opiekunem</a>
             </td>
         </tr>
     </tbody>
-    <tbody ng-if="practiceCtrl.practices.length == 0">
+    <tbody ng-if="!practiceCtrl.practices.length>0">
         <tr>
             <td colspan="8">
                 Brak wyników
