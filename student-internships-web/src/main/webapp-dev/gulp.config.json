@@ -19,6 +19,7 @@
         "js": [
             "bower_components/angular/angular.js",
             "bower_components/angular-animate/angular-animate.js",
+            "bower_components/angular-i18n/angular-locale_pl-pl.js",
             "bower_components/angular-strap/dist/angular-strap.js",
             "bower_components/angular-strap/dist/angular-strap.tpl.js",
             "bower_components/angular-route/angular-route.js",

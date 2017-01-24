@@ -42,8 +42,8 @@
     width: 8%;
 }
 
-.width10 {
-    width: 10%;
+.width20 {
+    width: 20%;
 }
 
 .width95 {
@@ -68,6 +68,10 @@
 
 .text-center {
     text-align: center;
+}
+
+.text-right {
+    text-align: right;
 }
 
 .timepicker-input {

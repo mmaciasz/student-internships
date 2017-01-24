@@ -16,7 +16,7 @@
         <tbody ng-if="diaryDetCtrl.timetableNodes.length>0">
         <tr ng-repeat="node in diaryDetCtrl.timetableNodes">
             <td class="width3">{{$index + 1}}</td>
-            <td class="width10">{{node.startDt | date:'yyyy-MM-dd'}}</td>
+            <td class="width20 text-right">{{node.startDt | date:'EEEE yyyy-MM-dd'}}</td>
             <td>
                 <div class="text-center" ng-hide="diaryDetCtrl.editingData[$index]">{{node.startDt | date: 'HH:mm'}}</div>
                 <div ng-show="diaryDetCtrl.editingData[$index]">
