@@ -39,7 +39,8 @@
                 <span class="required">*</span>
             </label>
             <div class="col-sm-10">
-                <select name="firmName" id="firmName" ng-options="firm.name for firm in empDetCtrl.firms track by firm.firmId" ng-model="empDetCtrl.selectedFirm" required>
+                <select ng-if="loggedUser.isAdmin()" name="firmName" class="form-control" id="firmName" ng-options="firm.name for firm in empDetCtrl.firms track by firm.firmId" ng-model="empDetCtrl.selectedFirm" required>
+                <select ng-if="!loggedUser.isAdmin()" name="firmName" class="form-control" id="firmName" ng-options="firm.name for firm in empDetCtrl.firms track by firm.firmId" ng-model="empDetCtrl.selectedFirm" disabled>
                 </select>
             </div>
         </div>

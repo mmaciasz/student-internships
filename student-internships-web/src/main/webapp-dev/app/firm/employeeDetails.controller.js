@@ -5,10 +5,10 @@
         .module('firm')
         .controller('EmployeeDetailsController', EmployeeDetailsController);
 
-    EmployeeDetailsController.$inject = ['$http', '$routeParams', '$location'];
+    EmployeeDetailsController.$inject = ['$http', '$routeParams', '$location', '$rootScope'];
 
     /* @ngInject */
-    function EmployeeDetailsController($http, $routeParams, $location) {
+    function EmployeeDetailsController($http, $routeParams, $location, $rootScope) {
         var vm = this;
         vm.employee = {};
         vm.firms = [];
@@ -52,7 +52,11 @@
         }
 
         function onSuccess() {
-            $location.path("/employee");
+            if($rootScope.loggedUser.isAdmin()) {
+                $location.path("/employee");
+            } else {
+                $location.path("/home");
+            }
         }
 
         function onFailure() {

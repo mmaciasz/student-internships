@@ -1,26 +1,26 @@
 <ul class="nav nav-pills nav-stacked">
-    <li ng-show="loggedUser.isAdmin()">
+    <li ng-show="loggedUser.isAdmin()" ng-class="getClass('/trainees')">
         <a href="/#/trainees">Ewidencja praktykantów</a>
     </li>
-    <li ng-show="loggedUser.isAdmin()">
+    <li ng-show="loggedUser.isAdmin()" ng-class="getClass('/firm')">
         <a href="/#/firm">Ewidencja firm</a>
     </li>
-    <li ng-show="loggedUser.isAdmin()">
+    <li ng-show="loggedUser.isAdmin()" ng-class="getClass('/employee')">
         <a href="/#/employee">Ewidencja opiekunów firm</a>
     </li>
-    <li ng-show="loggedUser.isAdmin()">
+    <li ng-show="loggedUser.isAdmin()" ng-class="getClass('/tutors')">
         <a href="/#/tutors">Ewidencja promotorów</a>
     </li>
-    <li>
+    <li ng-class="getClass('/internships/subjects')">
         <a href="/#/internships/subjects">Tematy praktyk</a>
     </li>
-    <li>
+    <li ng-class="getClass('/internships')">
         <a href="/#/internships">Praktyki</a>
     </li>
-    <li>
+    <li ng-class="getClass('/schedule')">
         <a href="/#/schedule">Harmonogram praktyk</a>
     </li>
-    <li>
+    <li ng-class="getClass('/diary')">
         <a href="/#/diary">Dziennik praktyk</a>
     </li>
 </ul>

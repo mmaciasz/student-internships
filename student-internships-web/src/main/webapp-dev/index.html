@@ -28,7 +28,9 @@
                         <li ng-if="isPrint()"><button class="btn btn-primary pull-right marginTop15" ng-click="print()">DRUKUJ</button></li>
                         <li ng-if="isPrint()"><a href="#/"><button class="btn btn-primary pull-right">POWRÓT</button></a></li>
                         <li ng-if="!isAuthorized() && !isPrint()"><a href="#/">{{'login' | translate}}</a></li>
-                        <li ng-if="isAuthorized() && !isPrint()"><a href="" ng-click="auth.logout()">{{'logout' | translate}} <span style="text-transform: none;">({{loggedUser.userName}})</span></a></li>
+                        <li ng-if="isAuthorized() && !isPrint() && loggedUser.isStudent()"><a href="#/trainees/{{loggedUser.user.userId}}">Edycja konta</a></li>
+                        <li ng-if="isAuthorized() && !isPrint() && loggedUser.isFirmEmployee()"><a href="#/employee/{{loggedUser.user.userId}}">Edycja konta</a></li>
+                        <li ng-if="isAuthorized() && !isPrint()"><a href="" ng-click="auth.logout()">{{'logout' | translate}} <span style="text-transform: none;">({{loggedUser.user.login}})</span></a></li>
                     </ul>
                 </div>
             </nav>

@@ -29,16 +29,22 @@
 
     app.controller('StudentDetailsController', StudentDetailsController);
 
-    StudentDetailsController.$inject = ['$http', '$routeParams', '$location'];
+    StudentDetailsController.$inject = ['$http', '$routeParams', '$location', '$rootScope'];
 
     /* @ngInject */
-    function StudentDetailsController($http, $routeParams, $location) {
+    function StudentDetailsController($http, $routeParams, $location, $rootScope) {
         var vm = this;
         vm.save = save;
         vm.isCreation = isCreation;
         vm.student = {};
 
+
         if(!isCreation()) {
+            var loggedUser = $rootScope.loggedUser;
+            if(!loggedUser.isAdmin() && $routeParams.id != loggedUser.user.userId) {
+                $location.path("/error");
+            }
+
             $http.get('/students/' + $routeParams.id).then(function (response) {
                 vm.student = response.data;
             });
@@ -57,7 +63,11 @@
         }
 
         function onSuccess(response) {
-            $location.path("/trainees");
+            if($rootScope.loggedUser.isAdmin()) {
+                $location.path("/trainees");
+            } else {
+                $location.path("/home");
+            }
         }
 
         function onFailure() {

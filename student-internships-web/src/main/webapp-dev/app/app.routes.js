@@ -16,7 +16,8 @@
                 });
 
                 $routeProvider.when('/home', {
-                    templateUrl: 'app/home/home.html'
+                    //templateUrl: 'app/home/home.html'
+                    redirectTo: "/internships/"
                 });
 
                 $routeProvider.when('/contact', {

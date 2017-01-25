@@ -40,7 +40,7 @@
         };
     });
 
-    app.run(function($rootScope) {
+    app.run(['$rootScope', '$location', function($rootScope, $location) {
         $rootScope.dictionary = {};
 
         $rootScope.dictionary.practiceDefStatus = {
@@ -80,6 +80,19 @@
                 label: "Zakończona"
             }
         };
-    });
+
+        $rootScope.getClass = function(pathName) {
+            pathName = pathName.replace(new RegExp("/", 'g'), "\\/");
+
+            var regExp = new RegExp("^" + pathName + "(\/\d+|\/create|\/)?$");
+
+            if(regExp.test($location.path())) {
+                return "active";
+            } else {
+                return "";
+            }
+
+        };
+    }]);
 
 })();
