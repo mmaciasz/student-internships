@@ -117,7 +117,7 @@
 
             if(vm.linkedWithPromoter) {
                 vm.practice.promoter = vm.practice.promoter || {};
-                vm.practice.promoter.promoterId = vm.promoterId
+                vm.practice.promoter.userId = vm.promoterId
             }
 
             if(isCreation()) {
